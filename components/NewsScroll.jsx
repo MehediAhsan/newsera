@@ -34,9 +34,9 @@ function ParallaxText({ children, baseVelocity = 100 }) {
   });
 
   return (
-    <div className="flex items-center gap-4">
-        <span className="bg-primary p-2">FlashNews</span>
-        <div className="parallax">
+    <div className="flex items-center gap-2">
+        <span className="bg-primary px-2 py-1 -skew-x-3">FlashNews</span>
+        <div className="parallax -skew-x-3 bg-gray-900 p-2">
       <motion.div className="scroller" style={{ x }}>
         <span>{children} </span>
         <span>{children} </span>
@@ -51,7 +51,7 @@ function ParallaxText({ children, baseVelocity = 100 }) {
 export default function NewsScroll() {
   return (
     <section className="mt-40">
-      <ParallaxText baseVelocity={-2}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam rerum cumque doloremque atque architecto.</ParallaxText>
+      <ParallaxText baseVelocity={1}>Wicketkeeper-batter Irfan Sukkur made a decisive 24 off 16 balls before getting out in the final over. Chaturanga de Silva hit an over boundaryLorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam rerum cumque doloremque atque architecto.</ParallaxText>
     </section>
   );
 }
