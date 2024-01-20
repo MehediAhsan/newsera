@@ -1,3 +1,6 @@
+import NewsScroll from './../components/NewsScroll';
 export default function Home() {
-  return <main></main>;
+  return <main>
+    <NewsScroll></NewsScroll>
+  </main>;
 }
