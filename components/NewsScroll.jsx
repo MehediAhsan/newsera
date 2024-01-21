@@ -35,15 +35,15 @@ function ParallaxText({ children, baseVelocity = 100 }) {
 
   return (
     <div className="flex items-center gap-2">
-        <span className="bg-primary px-2 py-1 -skew-x-3">FlashNews</span>
-        <div className="parallax -skew-x-3 bg-gray-900 p-2">
-      <motion.div className="scroller" style={{ x }}>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-      </motion.div>
-    </div>
+      <span className="bg-primary px-2 py-1 -skew-x-3">FlashNews</span>
+      <div className="parallax -skew-x-3 border-2 border-gray-700 p-2">
+        <motion.div className="scroller" style={{ x }}>
+          <span>{children} </span>
+          <span>{children} </span>
+          <span>{children} </span>
+          <span>{children} </span>
+        </motion.div>
+      </div>
     </div>
   );
 }
