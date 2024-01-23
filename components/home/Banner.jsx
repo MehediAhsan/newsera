@@ -3,8 +3,9 @@ import BannerLeft from './BannerLeft'
 
 const Banner = () => {
     return (
-        <div>
-            <BannerLeft/>    
+        <div className='flex gap-5 mt-10'>
+            <BannerLeft/>
+            <span className=''>sfdsd</span>    
         </div>
     );
 };

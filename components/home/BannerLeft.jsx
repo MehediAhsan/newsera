@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { EffectFade, Autoplay, Pagination, Navigation } from "swiper/modules";
 
 export default function BannerLeft() {
   const data = [
@@ -21,7 +21,7 @@ export default function BannerLeft() {
     },
     {
       id: 2,
-      img: "https://images.unsplash.com/photo-1506187334569-7596f62cf93f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3149&q=80",
+      img: "https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       heading: "sdf",
       des: "sdfsdf",
     },
@@ -31,6 +31,7 @@ export default function BannerLeft() {
     <>
       <Swiper
         spaceBetween={30}
+        // effect={'fade'}
         centeredSlides={true}
         autoplay={{
           delay: 2500,
@@ -40,21 +41,21 @@ export default function BannerLeft() {
           clickable: true,
         }}
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[EffectFade, Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
         {data.map((dt, i) => {
           return (
             <SwiperSlide key={dt.id}>
               <div
-                class="da relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50"
+                class="relative flex flex-col justify-center overflow-hidden bg-gray-50"
               >
                 <div class="absolute inset-0 bg-center dark:bg-black"></div>
-                <div class="group relative m-0 flex h-72 w-96 rounded-xl shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg">
+                <div class="group relative flex rounded-xl shadow-xl ring-gray-900/5">
                   <div class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                     <img
                       src={dt.img}
-                      class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
+                      class="animate-fade-in block h-96 w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
                       alt=""
                     />
                   </div>
