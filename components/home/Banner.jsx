@@ -1,5 +1,6 @@
 import React from 'react';
 import BannerLeft from './BannerLeft'
+import BannerRight from './BannerRight';
 
 const Banner = () => {
     return (
@@ -7,7 +8,9 @@ const Banner = () => {
             <div className='col-span-2'>
                 <BannerLeft />
             </div>
-            <span className=''>sfdsd</span>
+            <div className='col-span-1'>
+                <BannerRight/>
+            </div>
         </div>
     );
 };

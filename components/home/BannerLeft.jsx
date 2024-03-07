@@ -16,15 +16,15 @@ export default function BannerLeft() {
   const data = [
     {
       id: 1,
-      img: "https://images.unsplash.com/photo-1506187334569-7596f62cf93f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3149&q=80",
-      heading: "sdf",
-      des: "sdfsdf",
+      img: "https://images.unsplash.com/photo-1559445368-b8a993676d7a?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      heading: "Blockchain.com is a cryptocurrency financial services company...",
+      des: "10 may, 2023",
     },
     {
       id: 2,
-      img: "https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      heading: "sdf",
-      des: "sdfsdf",
+      img: "https://images.unsplash.com/photo-1525338078858-d762b5e32f2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      heading: "Artificial intelligence (AI) is the intelligence of machines or software...",
+      des: "10 may, 2023",
     },
   ];
 
@@ -32,15 +32,19 @@ export default function BannerLeft() {
     <>
       <Swiper
         spaceBetween={30}
+        style={{
+          "--swiper-navigation-color": "#EA580C",
+        }}
         // effect={'fade'}
         centeredSlides={true}
+        loop={true}
         autoplay={{
-          delay: 2500,
+          delay: 1500,
           disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-        }}
+        // pagination={{
+        //   clickable: false,
+        // }}
         navigation={true}
         modules={[EffectFade, Autoplay, Pagination, Navigation]}
         className="mySwiper"
@@ -56,13 +60,13 @@ export default function BannerLeft() {
                   <div className="z-10 h-full w-full overflow-hidden opacity-80 transition duration-300 ease-in-out group-hover:opacity-100">
                     <Image
                       src={dt.img}
-                      className="animate-fade-in block h-96 w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-105"
+                      className="animate-fade-in block h-96 w-full scale-100 transform object-cover object-center opacity-100 transition duration-300"
                       alt=""
                       height={300}
                       width={300}
                     />
                   </div>
-                  <div className="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
+                  <div className="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110 w-8/12">
                     <h1 className="font-serif text-2xl font-bold text-white shadow-xl">
                       {dt.heading}
                     </h1>
