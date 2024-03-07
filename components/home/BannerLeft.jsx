@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { EffectFade, Autoplay, Pagination, Navigation } from "swiper/modules";
+import Image from "next/image";
 
 export default function BannerLeft() {
   const data = [
@@ -48,22 +49,24 @@ export default function BannerLeft() {
           return (
             <SwiperSlide key={dt.id}>
               <div
-                class="relative flex flex-col justify-center overflow-hidden bg-gray-50"
+                className="relative flex flex-col justify-center overflow-hidden bg-gray-50"
               >
-                <div class="absolute inset-0 bg-center dark:bg-black"></div>
-                <div class="group relative flex rounded-xl shadow-xl ring-gray-900/5">
-                  <div class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
-                    <img
+                <div className="absolute inset-0 bg-center bg-black"></div>
+                <div className="group relative flex shadow-xl ring-gray-900/5">
+                  <div className="z-10 h-full w-full overflow-hidden opacity-80 transition duration-300 ease-in-out group-hover:opacity-100">
+                    <Image
                       src={dt.img}
-                      class="animate-fade-in block h-96 w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
+                      className="animate-fade-in block h-96 w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-105"
                       alt=""
+                      height={300}
+                      width={300}
                     />
                   </div>
-                  <div class="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
-                    <h1 class="font-serif text-2xl font-bold text-white shadow-xl">
+                  <div className="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
+                    <h1 className="font-serif text-2xl font-bold text-white shadow-xl">
                       {dt.heading}
                     </h1>
-                    <h1 class="text-sm font-light text-gray-200 shadow-xl">
+                    <h1 className="text-sm font-light text-gray-200 shadow-xl">
                       {dt.des}
                     </h1>
                   </div>

@@ -2,30 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* scroll thumb */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 5px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+::-webkit-scrollbar-track {
+  background: #000101;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(45deg, #EA580C, #EA580C);
+  border-radius: 5px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #EA580C, #EA580C);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(45deg, #EA580C, #EA580C);
+  border-radius: 8px;
+}
 
 /* framer motion */
 
@@ -60,33 +60,18 @@ body {
 }
 
 
-::-webkit-scrollbar {
-  height: 5px;
-  width: 5px;
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  -webkit-border-radius: 1ex;
-}
-
-::-webkit-scrollbar-corner {
-  background: var(--background);
-}
-
-
 /* social button */
 
 .card {
   width: fit-content;
   height: fit-content;
-  background-color: rgb(169, 166, 166);
+  background-color: #EA580C;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px 5px;
   gap: 16px;
+  border-radius: 5px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
 }
 
@@ -95,6 +80,7 @@ body {
   width: 28px;
   height: 28px;
   background-color: rgb(44, 44, 44);
+  border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
