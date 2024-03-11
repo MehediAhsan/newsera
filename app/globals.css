@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+:root {
+  --swiper-navigation-size: 25px !important;
+}
+
+
 /* scroll thumb */
 ::-webkit-scrollbar {
   width: 3px;
@@ -138,3 +145,72 @@
 }
 
 
+
+
+.news .swiper-button-prev {
+  padding: 16px;
+  border: 2px solid gray;
+  background-color: black;
+  border-radius: 50%;
+  top: 18px !important;
+  left: 93% !important;
+  color: gray !important;
+}
+
+.news .swiper-button-next {
+  padding: 16px;
+  border: 2px solid gray;
+  background-color: black;
+  border-radius: 50%;
+  top: 18px !important;
+  right: 0% !important;
+  color: gray !important;
+}
+
+.news .swiper-button-prev:hover {
+  color: #EFC378;
+}
+
+.news .swiper-button-next:hover {
+  color: #EFC378;
+}
+
+
+@media only screen and (max-width: 500px) {
+  .news .swiper-button-prev {
+      left: 75% !important;
+  }
+
+  .news .swiper-button-next {
+      left: 90% !important;
+  }
+}
+
+@media only screen and (min-width:500px) {
+  .news .swiper-button-prev {
+      left: 83% !important;
+  }
+
+  .news .swiper-button-next {
+      left: 93% !important;
+  }
+}
+@media only screen and (min-width:720px) {
+  .news .swiper-button-prev {
+      left: 88% !important;
+  }
+
+  .news .swiper-button-next {
+      left: 95% !important;
+  }
+}
+
+@media only screen and (min-width:1024px) {
+  .news .swiper-button-prev {
+      left: 92% !important;
+  }
+
+  .news .swiper-button-next {
+      left: 97% !important;
+  }
+}
