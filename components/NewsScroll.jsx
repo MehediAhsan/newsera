@@ -1,57 +1,16 @@
-'use client'
+import React from 'react';
 
-import React, { useRef } from "react";
-import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame } from "framer-motion";
-import { wrap } from "@motionone/utils";
-
-function ParallaxText({ children, baseVelocity = 100 }) {
-  const baseX = useMotionValue(0);
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400
-  });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
-    clamp: false
-  });
-
-  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
-
-  const directionFactor = useRef(1);
-  useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
-
-    if (velocityFactor.get() < 0) {
-      directionFactor.current = -1;
-    } else if (velocityFactor.get() > 0) {
-      directionFactor.current = 1;
-    }
-
-    moveBy += directionFactor.current * moveBy * velocityFactor.get();
-
-    baseX.set(baseX.get() + moveBy);
-  });
-
+const NewsScroll = () => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 mt-40">
       <span className="bg-primary px-2 py-1 -skew-x-3">FlashNews</span>
-      <div className="parallax -skew-x-3 border-2 border-gray-700 p-2">
-        <motion.div className="scroller" style={{ x }}>
-          <span>{children} </span>
-          <span>{children} </span>
-          <span>{children} </span>
-          <span>{children} </span>
-        </motion.div>
+      <div className="-skew-x-3 border-2 border-gray-700 p-2 flex-1">
+            <div className="select-none" >
+              <marquee behavior="scroll" direction="left">An unbeaten 98 from Alex Carey dragged Australia to victory over New Zealand by three wickets in a thrilling second Test on Monday to give &nbsp;&nbsp; Modern Structures &nbsp;&nbsp; Thinking outside of the box Decoration</marquee>
+            </div>
       </div>
     </div>
   );
-}
+};
 
-export default function NewsScroll() {
-  return (
-    <section className="mt-40">
-      <ParallaxText baseVelocity={1}>Wicketkeeper-batter Irfan Sukkur made a decisive 24 off 16 balls before getting out in the final over. Chaturanga de Silva hit an over boundaryLorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam rerum cumque doloremque atque architecto.</ParallaxText>
-    </section>
-  );
-}
+export default NewsScroll;

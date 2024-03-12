@@ -44,8 +44,8 @@ const InternationalNews = () => {
     ]
     return (
         <div className='my-24 mx-10 relative news'>
-            <div className='border-b border-primary mb-10'>
-                <button className='bg-gray-300 p-3 text-black'>International News</button>
+            <div className='mb-10'>
+                <button className='bg-gray-300 p-2 border-b border-primary  font-medium -skew-x-6 text-black'>International News</button>
             </div>
             <Swiper
                 slidesPerView={1}
