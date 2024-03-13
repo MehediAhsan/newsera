@@ -49,8 +49,9 @@ const Navbar = () => {
     const navigation = [
         { title: "Home", path: "/", isDrapdown: false },
         { title: "News", path: "javascript:void(0)", isDrapdown: true, navs: dropdownNavs },
-        { title: "About Us", path: "/about", isDrapdown: false },
-        { title: "Contact Us", path: "/contact", isDrapdown: false }
+        { title: "About", path: "/about", isDrapdown: false },
+        { title: "Contact", path: "/contact", isDrapdown: false },
+        { title: "Dashboard", path: "/dashboard", isDrapdown: false }
     ]
 
     useEffect(() => {
