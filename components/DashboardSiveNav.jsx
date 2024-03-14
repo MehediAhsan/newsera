@@ -4,9 +4,12 @@ import Link from "next/link";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { PiNewspaper } from "react-icons/pi";
 import { BiAddToQueue } from "react-icons/bi";
-import { IoSettingsOutline, IoLogOutOutline  } from "react-icons/io5";
+import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
+import { FaAlignLeft } from "react-icons/fa";
+import { useState } from "react";
 
 const DashboardSiveNav = () => {
+    const [open, setOpen] = useState(false);
 
     const navigation = [
         {
@@ -41,8 +44,16 @@ const DashboardSiveNav = () => {
 
     return (
         <>
+            <FaAlignLeft
+                onClick={() => setOpen(!open)}
+                className={`absolute z-50 top-6 left-4 text-xl lg:hidden transition duration-300 cursor-pointer text-green-50 ${open ? "rotate-180" : ""
+                    }`}
+            ></FaAlignLeft>
+
             <nav
-                className="fixed top-0 left-0 h-full bg-[#181616] space-y-8 w-60">
+            className={`${
+                open ? "absolute z-40" : "hidden"
+              } w-72 overflow-hidden rounded lg:block bg-[#181616] space-y-8 h-screen `}>
                 <div class="flex flex-col h-full">
                     <div className='h-20 flex items-center px-8'>
                         <Link href="/" className='text-xl font-semibold text-primary'>
@@ -77,13 +88,13 @@ const DashboardSiveNav = () => {
                             </ul>
                             <div className="py-4 px-4 border-t">
                                 <div className="flex items-center gap-x-4">
-                                    <img src="https://randomuser.me/api/portraits/women/79.jpg" className="w-12 h-12 rounded-full" />
+                                    <img src="https://avatars.githubusercontent.com/u/83613654?v=4" className="w-12 h-12 rounded-full" />
                                     <div>
-                                        <span className="block text-gray-300 text-sm font-semibold">Alivika tony</span>
+                                        <span className="block text-gray-300 text-sm font-semibold">Mehedi Ahsan</span>
                                         <span
-                                            className="block mt-px text-gray-400 hover:text-indigo-600 text-xs"
+                                            className="block mt-px text-gray-400 text-xs"
                                         >
-                                            avih@gmail.com
+                                            mehediahsan@gmail.com
                                         </span>
                                     </div>
                                 </div>
