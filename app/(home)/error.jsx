@@ -1,13 +1,8 @@
 'use client'
+import ErrorMessage from "@/components/shared/ErrorMessage"
  
 export default function Error({ error, reset }) {
   return (
-    <center className="min-h-[50vh]">
-      <h2>Something went wrong!</h2>
-      <p>{error.message}</p>
-      <button className="rounded-lg border px-2 py-1" onClick={() => reset()}>
-        Try again
-      </button>
-    </center>
+    <ErrorMessage error={error} reset={reset}/>
   )
 }
