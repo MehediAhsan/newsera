@@ -4,7 +4,18 @@ import { useForm } from "react-hook-form";
 
 const AddNews = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async(data) => {
+    console.log(data)
+    let res = await fetch("http://localhost:3000/api/news", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    });
+    const dt = await res.json();
+    console.log("res", dt);
+  };
   return (
     <div className="w-7/12 mx-auto mt-20">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
