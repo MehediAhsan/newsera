@@ -18,6 +18,7 @@ export async function POST(request) {
     // Extract data from the request body
     const data = await request.json();
 
+    console.log(data);
     // Ensure database connection
     await ensureDBConnection();
 
