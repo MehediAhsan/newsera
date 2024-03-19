@@ -1,19 +1,10 @@
-// posts.js
+import connectMongoDB from "@/lib/mongodb";
+import News from "@/models/news";
+import { NextResponse } from "next/server";
 
-import clientPromise from "../../../components/lib/mongodb";
-
-export default async function handler(req, res) {
-  const client = await clientPromise;
-  const db = client.db("newEra");
-  switch (req.method) {
-    case "POST":
-      let bodyObject = JSON.parse(req.body);
-      let myPost = await db.collection("news").insertOne(bodyObject);
-      res.json(myPost.ops[0]);
-      break;
-    case "GET":
-      const allPosts = await db.collection("news").find({}).toArray();
-      res.json({ status: 200, data: allPosts });
-      break;
-  }
+export async function POST(request) {
+  const { headline, type } = await request.json();
+  await connectMongoDB();
+  await News.create({ headline, type });
+  return NextResponse.json({ message: "Topic Created" }, { status: 201 });
 }

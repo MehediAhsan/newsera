@@ -6,15 +6,23 @@ const AddNews = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = async(data) => {
     console.log(data)
-    let res = await fetch("http://localhost:3000/api/news", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data),
-    });
-    const dt = await res.json();
-    console.log("res", dt);
+    try {
+      const res = await fetch("http://localhost:3000/api/news", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        router.push("/");
+      } else {
+        throw new Error("Failed to create a topic");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="w-7/12 mx-auto mt-20">
