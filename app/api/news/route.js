@@ -28,7 +28,19 @@ export async function POST(request) {
     // Respond with success message
     return NextResponse.json({ message: "News is Added Successfully" }, { status: 201 });
   } catch (error) {
-    console.error("Error creating news topic:", error);
+    console.error("Error creating news news:", error);
     return NextResponse.error({ message: "Failed to add news" });
   }
 }
+
+export async function GET() {
+  try {
+    await ensureDBConnection();
+    const allNews = await News.find();
+    return NextResponse.json({ allNews });
+  } catch (error) {
+    console.error("Error fetching news:", error);
+    return NextResponse.error({ message: "Failed to fetch news" });
+  }
+}
+
