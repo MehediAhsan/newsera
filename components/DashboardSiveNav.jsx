@@ -18,7 +18,7 @@ const DashboardSiveNav = () => {
             icon: <MdOutlineDashboardCustomize />
         },
         {
-            href: '/',
+            href: '/dashboard/allNews',
             name: 'All News',
             icon: <PiNewspaper />
         },

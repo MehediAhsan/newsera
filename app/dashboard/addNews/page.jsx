@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from 'next/navigation';
 
 const AddNews = () => {
+  const router = useRouter();
   const { register, handleSubmit } = useForm();
-  const [image, setImage] = useState(null)
+  const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -24,7 +26,6 @@ const AddNews = () => {
 
 
   const onSubmit = async (data) => {
-    console.log(data)
     try {
       const res = await fetch("http://localhost:3000/api/news", {
         method: "POST",
@@ -34,10 +35,12 @@ const AddNews = () => {
         body: JSON.stringify({...data, image}),
       });
 
+      console.log(res);
+
       if (res.ok) {
-        router.push("/");
+        router.push("/dashboard");
       } else {
-        throw new Error("Failed to create a topic");
+        throw new Error("Failed to create a news");
       }
     } catch (error) {
       console.log(error);
