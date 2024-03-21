@@ -33,14 +33,14 @@ export async function POST(request) {
   }
 }
 
-export async function GET() {
-  try {
-    await ensureDBConnection();
-    const allNews = await News.find();
-    return NextResponse.json({ allNews });
-  } catch (error) {
-    console.error("Error fetching news:", error);
-    return NextResponse.error({ message: "Failed to fetch news" });
-  }
-}
+// export async function GET() {
+//   try {
+//     await ensureDBConnection();
+//     const allNews = await News.find();
+//     return NextResponse.json({ allNews });
+//   } catch (error) {
+//     console.error("Error fetching news:", error);
+//     return NextResponse.error({ message: "Failed to fetch news" });
+//   }
+// }
 

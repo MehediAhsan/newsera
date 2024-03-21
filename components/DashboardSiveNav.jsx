@@ -23,7 +23,7 @@ const DashboardSiveNav = () => {
             icon: <PiNewspaper />
         },
         {
-            href: 'dashboard/addNews',
+            href: '/dashboard/addNews',
             name: 'Add News',
             icon: <BiAddToQueue />
         },
