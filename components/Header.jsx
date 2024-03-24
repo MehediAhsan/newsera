@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaTwitter, FaYoutube } from "react-icons/fa";
 
@@ -28,7 +29,7 @@ const Header = () => {
         </div>
 
 
-        <button class="smky-btn3 relative hover:text-[#f5f5f4] py-2 px-3 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 hover:transition-all hover:duration-500 after:transition-all after:duration-500 after:hover:transition-all after:hover:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-primary after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-gray-100">LOGIN</button>
+        <Link href="/login" class="smky-btn3 relative hover:text-[#f5f5f4] py-2 px-3 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 hover:transition-all hover:duration-500 after:transition-all after:duration-500 after:hover:transition-all after:hover:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-primary after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-gray-100">LOGIN</Link>
       </div>
     </div>
   );
