@@ -53,7 +53,7 @@ const LoginPage = () => {
                         >
                             Log In
                         </button>
-                        <div className='text-center text-gray-300 my-5 text-sm'>--- Or Sign In With ---</div>
+                        <div className='text-center text-gray-400 my-5 text-sm'>--- Or Sign In With ---</div>
                         <div className='flex gap-7 justify-center items-center text-2xl mb-5'>
                             <FaGoogle className='text-red-500 cursor-pointer' />
                             <FaFacebook className='text-blue-500 cursor-pointer' />
