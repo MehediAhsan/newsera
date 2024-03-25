@@ -4,8 +4,7 @@ const newsSchema = new Schema(
   {
     headline: String,
     type: String,
-    description: String,
-    image: String
+    description: String
   },
   {
     timestamps: true,

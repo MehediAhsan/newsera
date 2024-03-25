@@ -1,60 +1,8 @@
-'use client'
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import getData from '@/components/common/serverData';
+import React from 'react';
 
-// const getAllNews = async () => {
-//     try {
-//         const res = await fetch("http://localhost:3000/api/news", {
-//             cache: "no-store",
-//         });
-
-//         if (!res.ok) {
-//             throw new Error("Failed to fetch news");
-//         }
-
-//         return res.json();
-//     } catch (error) {
-//         console.log("Error loading news: ", error);
-//     }
-// };
-
-const AllNews = () => {
-    const [allNews, setAllNews] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-
-    const fetchNews = () => {
-        fetch('http://localhost:3000/api/news')
-        .then(res => res.json())
-        .then(data => setAllNews(data))
-    }
-
-    useEffect(() => {
-        // const fetchData = async () => {
-        //     try {
-        //         const res = await fetch("http://localhost:3000/api/news", {
-        //             cache: "no-store",
-        //         });
-        //         if (!res.ok) {
-        //             throw new Error("Failed to fetch news");
-        //         }
-        //         const data = await res.json();
-        //         setAllNews(data);
-        //     } catch (error) {
-        //         setError(error);
-        //     } finally {
-        //         setLoading(false);
-        //     }
-        // };
-        // fetchData();
-        fetchNews();
-    }, []);
-
-    console.log(allNews);
-
-    // if (loading) return <div>Loading...</div>;
-    // if (error) return <div>Error loading news: {error.message}</div>;
+const AllNews = async () => {
+    const allNews = await getData('http://localhost:3000/api/news');
 
     return (
         <div className="mt-12 shadow-sm rounded-lg overflow-scroll">
@@ -76,7 +24,7 @@ const AllNews = () => {
                                 <td className='p-4'>
                                     <img
                                         className="h-20 w-20 object-cover"
-                                        src={`data:image/jpeg;base64,${news.image}`}
+                                        src={`data:image/jpeg;base64,${news?.image}`}
                                         alt=""
                                     />
                                 </td>

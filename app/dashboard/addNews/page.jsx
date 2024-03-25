@@ -6,33 +6,35 @@ import { useRouter } from 'next/navigation';
 const AddNews = () => {
   const router = useRouter();
   const { register, handleSubmit } = useForm();
-  const [image, setImage] = useState(null);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  // const [image, setImage] = useState(null);
 
-    if (file) {
-      // Read the file as a data URL
-      const reader = new FileReader();
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
 
-      reader.onloadend = () => {
-        // Set the preview and the base64-encoded image
-        setImage(btoa(reader.result))
-      };
+  //   if (file) {
+  //     // Read the file as a data URL
+  //     const reader = new FileReader();
 
-      reader.readAsBinaryString(file);
-    }
-  };
+  //     reader.onloadend = () => {
+  //       // Set the preview and the base64-encoded image
+  //       setImage(btoa(reader.result))
+  //     };
+
+  //     reader.readAsBinaryString(file);
+  //   }
+  // };
 
 
   const onSubmit = async (data) => {
+    console.log(data);
     try {
-      const res = await fetch("http://localhost:3000/api/news", {
+      const res = await fetch("http://localhost:3001/api/news", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({...data, image}),
+        body: JSON.stringify(data),
       });
 
       console.log(res);
@@ -61,10 +63,10 @@ const AddNews = () => {
         </select>
         <textarea {...register("description")} rows="5" className="px-3 py-2 text-sm text-gray-600 bg-white border rounded-lg shadow-sm outline-none appearance-none focus:ring-offset-2 focus:ring-indigo-600 focus:ring-2" placeholder="Enter News Description..." />
 
-        <div className="grid w-full items-center gap-3">
+        {/* <div className="grid w-full items-center gap-3">
           <label className="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Upload News Banner</label>
           <input type="file" accept="image/*" onChange={handleImageChange} className="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium" />
-        </div>
+        </div> */}
 
         <input type="submit" className="bg-primary p-2 rounded cursor-pointer" />
       </form>
