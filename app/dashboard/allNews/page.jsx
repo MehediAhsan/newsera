@@ -2,7 +2,7 @@ import getData from '@/components/common/serverData';
 import React from 'react';
 
 const AllNews = async () => {
-    const allNews = await getData('http://localhost:3000/api/news');
+    const {allNews} = await getData('http://localhost:3001/api/news');
 
     return (
         <div className="mt-12 shadow-sm rounded-lg overflow-scroll">
