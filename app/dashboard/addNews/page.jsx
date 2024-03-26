@@ -39,7 +39,7 @@ const AddNews = () => {
       console.log(res);
 
       if (res.ok) {
-        router.push("/dashboard/allNews");
+        router.push("/dashboard");
       } else {
         throw new Error("Failed to create a news");
       }
