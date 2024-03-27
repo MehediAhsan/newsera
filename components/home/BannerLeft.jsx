@@ -34,6 +34,7 @@ export default function BannerLeft() {
         spaceBetween={30}
         style={{
           "--swiper-navigation-color": "#EA580C",
+          "--swiper-navigation-size": "35px"
         }}
         // effect={'fade'}
         centeredSlides={true}
