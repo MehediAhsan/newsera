@@ -2,17 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root {
   --swiper-navigation-size: 25px !important;
 }
 
-
 /* scroll thumb */
 ::-webkit-scrollbar {
   width: 3px;
-  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -20,197 +16,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-image: linear-gradient(45deg, #EA580C, #EA580C);
+  background:  #7e7a79;
   border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #EA580C, #EA580C);
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(45deg, #EA580C, #EA580C);
-  border-radius: 8px;
-}
-
-/* framer motion */
-
-.progress {
-  position: fixed;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: var(--accent);
-  bottom: 100px;
-}
-
-.parallax {
-  overflow: hidden;
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.parallax .scroller {
-  font-weight: 300;
-  font-size: 16px;
-  display: flex;
-  white-space: nowrap;
-  display: flex;
-  flex-wrap: nowrap;
-  margin-left: 100px;
-}
-
-.parallax span {
-  display: block;
-  margin-right: 30px;
-}
-
-
-/* social button */
-
-.card {
-  width: fit-content;
-  height: fit-content;
-  background-color: #EA580C;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 5px;
-  gap: 16px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
-}
-
-/* for all social containers*/
-.socialContainer {
-  width: 28px;
-  height: 28px;
-  background-color: rgb(44, 44, 44);
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition-duration: .5s;
-}
-/* instagram*/
-.containerOne:hover {
-  background-color: #d62976;
-  transition-duration: .5s;
-}
-/* twitter*/
-.containerTwo:hover {
-  background-color: #00acee;
-  transition-duration: .5s;
-}
-/* linkdin*/
-.containerThree:hover {
-  background-color: #0072b1;
-  transition-duration: .5s;
-}
-/* Whatsapp*/
-.containerFour:hover {
-  background-color: blue;
-  transition-duration: .5s;
-}
-
-.socialContainer:active {
-  transform: scale(0.9);
-  transition-duration: .5s;
-}
-
-.socialSvg {
-  width: 24px;
-}
-
-.socialSvg path {
-  fill: rgb(255, 255, 255);
-}
-
-.socialContainer:hover .socialSvg {
-  animation: slide-in-top 0.3s both;
-}
-
-@keyframes slide-in-top {
-  0% {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
 
 
 
-.news .swiper-button-prev {
-  padding: 16px;
-  border: 2px solid gray;
-  background-color: black;
-  border-radius: 50%;
-  top: 18px !important;
-  left: 93% !important;
-  color: gray !important;
-}
-
-.news .swiper-button-next {
-  padding: 16px;
-  border: 2px solid gray;
-  background-color: black;
-  border-radius: 50%;
-  top: 18px !important;
-  right: 0% !important;
-  color: gray !important;
-}
-
-.news .swiper-button-prev:hover {
-  color: #EFC378;
-}
-
-.news .swiper-button-next:hover {
-  color: #EFC378;
-}
-
-
-@media only screen and (max-width: 500px) {
-  .news .swiper-button-prev {
-      left: 75% !important;
-  }
-
-  .news .swiper-button-next {
-      left: 90% !important;
-  }
-}
-
-@media only screen and (min-width:500px) {
-  .news .swiper-button-prev {
-      left: 83% !important;
-  }
-
-  .news .swiper-button-next {
-      left: 93% !important;
-  }
-}
-@media only screen and (min-width:720px) {
-  .news .swiper-button-prev {
-      left: 88% !important;
-  }
-
-  .news .swiper-button-next {
-      left: 95% !important;
-  }
-}
-
-@media only screen and (min-width:1024px) {
-  .news .swiper-button-prev {
-      left: 92% !important;
-  }
-
-  .news .swiper-button-next {
-      left: 97% !important;
-  }
-}

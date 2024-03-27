@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 // import required modules
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
+import '../../styles/newsStyle.css';
 
 const InternationalNews = () => {
     const items = [

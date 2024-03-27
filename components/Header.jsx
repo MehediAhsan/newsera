@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaTwitter, FaYoutube } from "react-icons/fa";
+import '../styles/commonStyle.css';
 
 const Header = () => {
   const date = new Date();
