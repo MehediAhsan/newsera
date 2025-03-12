@@ -28,12 +28,13 @@ const AddNews = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await fetch("http://localhost:3001/api/news", {
+      const res = await fetch("/api/news", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify({...data,image}),
+        cache: "no-store",
       });
 
       console.log(res);

@@ -26,7 +26,15 @@ export async function POST(request) {
     await News.create(data);
 
     // Respond with success message
-    return NextResponse.json({ message: "News is Added Successfully" }, { status: 201 });
+    return NextResponse.json(
+      { message: "News is Added Successfully" },
+      {
+        status: 201,
+        headers: {
+          "Cache-Control": "no-store", // 🔥 Prevent caching
+        },
+      }
+    );
   } catch (error) {
     console.error("Error creating news news:", error);
     return NextResponse.error({ message: "Failed to add news" });
@@ -34,13 +42,16 @@ export async function POST(request) {
 }
 
 export async function GET() {
+  console.log("API /api/nes hit"); // 👈 Log when API starts
+
   try {
     await ensureDBConnection();
     const allNews = await News.find();
+    console.log("Fetched News Count:", allNews.length); // Log fetched data count
+    console.log("Fetched Data:", allNews);
     return NextResponse.json({ allNews });
   } catch (error) {
     console.error("Error fetching news:", error);
     return NextResponse.error({ message: "Failed to fetch news" });
   }
 }
-
