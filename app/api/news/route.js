@@ -31,25 +31,29 @@ export async function POST(request) {
       {
         status: 201,
         headers: {
-          "Cache-Control": "no-store", // 🔥 Prevent caching
+          "Cache-Control": "no-store",
         },
       }
     );
   } catch (error) {
     console.error("Error creating news news:", error);
-    return NextResponse.error({ message: "Failed to add news" });
+    return NextResponse.json(
+      { message: "Failed to add news" },
+      {
+        status: 500,
+        headers: {
+          "Cache-Control": "no-store",
+        },
+      }
+    );
   }
 }
 
 export async function GET() {
-  console.log("API /api/nes hit"); // 👈 Log when API starts
-
   try {
     await ensureDBConnection();
     const allNews = await News.find();
-    console.log("Fetched News Count:", allNews.length); // Log fetched data count
-    console.log("Fetched Data:", allNews);
-    return NextResponse.json({ allNews });
+    return NextResponse.json(allNews);
   } catch (error) {
     console.error("Error fetching news:", error);
     return NextResponse.error({ message: "Failed to fetch news" });

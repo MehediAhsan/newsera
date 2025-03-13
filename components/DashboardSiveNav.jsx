@@ -53,7 +53,7 @@ const DashboardSiveNav = () => {
             <nav
             className={`${
                 open ? "absolute z-40" : "hidden"
-              } w-72 overflow-hidden rounded lg:block bg-[#181616] space-y-8 h-screen `}>
+              } w-72 overflow-hidden rounded lg:block bg-[#181616] space-y-8 min-h-screen`}>
                 <div class="flex flex-col h-full">
                     <div className='h-20 flex items-center px-8'>
                         <Link href="/" className='text-xl font-semibold text-primary'>
