@@ -3,24 +3,18 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useApi } from "@/hooks/useApi";
-import Breadcrumb from "@/components/common/Breadcrumb"; // Import Breadcrumb
+import Breadcrumb from "@/components/common/Breadcrumb";
+import Input from "@/components/ui/Input";
+import Select from "@/components/ui/Select";
+import Textarea from "@/components/ui/Textarea";
+import FileUpload from "@/components/ui/FileUpload";
 
 const AddNews = () => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const { mutate: addNews, isMutating } = useApi("/api/news", "POST", { queryKey: ["news"] });
 
   const [image, setImage] = useState(null);
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setImage(btoa(reader.result));
-      reader.readAsBinaryString(file);
-    }
-  };
 
   const onSubmit = (data) => {
     addNews(
@@ -35,46 +29,23 @@ const AddNews = () => {
 
   return (
     <>
-      <Breadcrumb
-        label="Add News"
-      />
+      <Breadcrumb label="Add News" />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 w-1/2 mx-auto">
-        <input
-          {...register("headline")}
-          className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition"
-          placeholder="Enter News Headline..."
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 w-1/2 mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+        <Input label="News Headline" register={register} required errors={errors} name="headline" placeholder="Enter News Headline..." />
+
+        <Select
+          label="News Type"
+          register={register}
+          required
+          errors={errors}
+          name="type"
+          options={["International", "Sports", "Entertainment", "Politics", "Education", "Health"]}
         />
 
-        <select
-          {...register("type")}
-          className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition"
-        >
-          <option value="">Choose News Type</option>
-          <option value="International">International</option>
-          <option value="Sports">Sports</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="Politics">Politics</option>
-          <option value="Education">Education</option>
-          <option value="Health">Health</option>
-        </select>
+        <Textarea label="News Description" register={register} required errors={errors} name="description" placeholder="Enter News Description..." />
 
-        <textarea
-          {...register("description")}
-          rows="5"
-          className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 transition"
-          placeholder="Enter News Description..."
-        />
-
-        <div>
-          <label className="text-sm font-medium mb-2 block">Upload News Banner</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg cursor-pointer focus:outline-none"
-          />
-        </div>
+        <FileUpload label="Upload News Banner" onFileChange={setImage} />
 
         <button
           type="submit"

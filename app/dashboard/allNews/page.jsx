@@ -34,13 +34,15 @@ const AllNews = () => {
               <tr key={item?.id} className="border border-gray-700 hover:bg-gray-800 transition duration-200">
                 <td className="p-2 border-r border-gray-700">{index + 1}</td>
                 <td className="p-2 border-r border-gray-700">
-                  <Image
-                    className="h-12 w-20 object-cover rounded mx-auto"
-                    src={`data:image/jpeg;base64,${item?.image}`}
-                    alt="news"
-                    width={100}
-                    height={100}
-                  />
+                  {
+                    item?.image ? <Image
+                      className="h-12 w-20 object-cover rounded mx-auto"
+                      src={item?.image}
+                      alt="news"
+                      width={100}
+                      height={100}
+                    /> : "N/A"
+                  }
                 </td>
                 <td className="p-2 border-r border-gray-700">{item?.headline}</td>
                 <td className="p-2 border-r border-gray-700">{item?.type}</td>
