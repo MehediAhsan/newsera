@@ -1,17 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { useApi } from "@/hooks/useApi";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 import Textarea from "@/components/ui/Textarea";
 import FileUpload from "@/components/ui/FileUpload";
+import { showAlert } from "@/utils/sweetAlert";
 
 const AddNews = () => {
-  const router = useRouter();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const { mutate: addNews, isMutating } = useApi("/api/news", "POST", { queryKey: ["news"] });
 
   const [image, setImage] = useState(null);
@@ -21,7 +20,9 @@ const AddNews = () => {
       { ...data, image },
       {
         onSuccess: () => {
-          router.push("/dashboard");
+          reset();
+          setImage(null);
+          showAlert({ title: "Success!", text: "News created successfully." })
         },
       }
     );
@@ -45,7 +46,7 @@ const AddNews = () => {
 
         <Textarea label="News Description" register={register} required errors={errors} name="description" placeholder="Enter News Description..." />
 
-        <FileUpload label="Upload News Banner" onFileChange={setImage} />
+        <FileUpload label="Upload News Banner" data={image} setData={setImage} />
 
         <button
           type="submit"

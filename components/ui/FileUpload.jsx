@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import Image from "next/image";
+import React from "react";
 
-const FileUpload = ({ label, onFileChange }) => {
-    const [preview, setPreview] = useState(null);
+const FileUpload = ({ label, data, setData }) => {
 
     const handleChange = (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setPreview(reader.result);
-                onFileChange(reader.result);
+                setData(reader.result);
             };
             reader.readAsDataURL(file);
         }
@@ -24,7 +23,7 @@ const FileUpload = ({ label, onFileChange }) => {
                 onChange={handleChange}
                 className="w-full px-3 py-2 bg-gray-900 border border-gray-700 rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            {preview && <img src={preview} alt="Preview" className="mt-2 w-32 h-20 object-cover rounded-lg border" />}
+            {data && <Image src={data} alt="Preview" width={100} height={100} className="mt-2 w-32 h-20 object-cover rounded-lg border" />}
         </div>
     );
 };
