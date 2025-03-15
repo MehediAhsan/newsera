@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 :root {
- 
 }
 
 /* scroll thumb */
@@ -16,11 +15,22 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background:  #7e7a79;
+  background: #7e7a79;
   border-radius: 5px;
 }
 
+.loader {
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  border-radius: 50%;
+  border: 3px solid gray;
+  border-top-color: transparent;
+  animation: rot1 1.2s linear infinite;
+}
 
-
-
-
+@keyframes rot1 {
+  to {
+    transform: rotate(360deg);
+  }
+}

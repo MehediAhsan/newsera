@@ -88,3 +88,30 @@ export async function PUT(request) {
     );
   }
 }
+
+
+export async function DELETE(request) {
+  try {
+    const { _id } = await request.json();
+
+    if (!_id) {
+      return NextResponse.json({ message: "News ID is required" }, { status: 400 });
+    }
+
+    await ensureDBConnection();
+
+    const deletedNews = await News.findByIdAndDelete(new mongoose.Types.ObjectId(_id));
+
+    if (!deletedNews) {
+      return NextResponse.json({ message: "News not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(
+      { message: "News deleted successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error deleting news:", error);
+    return NextResponse.json({ message: "Failed to delete news" }, { status: 500 });
+  }
+}

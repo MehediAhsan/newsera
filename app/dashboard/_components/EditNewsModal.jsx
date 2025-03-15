@@ -1,16 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { useApi } from "@/hooks/useApi";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 import Textarea from "@/components/ui/Textarea";
 import FileUpload from "@/components/ui/FileUpload";
 import Modal from "@/components/common/Modal";
+import { showAlert } from "@/utils/sweetAlert";
 
 const EditNewsModal = ({ isOpen, onClose, newsItem }) => {
-    const router = useRouter();
     const { register, handleSubmit, setValue, formState: { errors } } = useForm();
     const { mutate: updateNews, isMutating } = useApi(`/api/news`, "PUT", { queryKey: ["news"] });
 
@@ -30,6 +29,7 @@ const EditNewsModal = ({ isOpen, onClose, newsItem }) => {
             {
                 onSuccess: () => {
                     onClose();
+                    showAlert({ title: "Success!", text: "News updated successfully." })
                 },
             }
         );
