@@ -1,11 +1,10 @@
 import connectMongoDB from "@/lib/mongodb";
 import News from "@/models/news";
+import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
-// Cached database connection promise
 let dbConnectionPromise = null;
 
-// Function to establish database connection if not already connected
 async function ensureDBConnection() {
   if (!dbConnectionPromise) {
     dbConnectionPromise = connectMongoDB();
@@ -15,17 +14,9 @@ async function ensureDBConnection() {
 
 export async function POST(request) {
   try {
-    // Extract data from the request body
     const data = await request.json();
-
-    console.log(data);
-    // Ensure database connection
     await ensureDBConnection();
-
-    // Create a new news topic
     await News.create(data);
-
-    // Respond with success message
     return NextResponse.json(
       { message: "News is Added Successfully" },
       {
@@ -57,5 +48,43 @@ export async function GET() {
   } catch (error) {
     console.error("Error fetching news:", error);
     return NextResponse.error({ message: "Failed to fetch news" });
+  }
+}
+
+export async function PUT(request) {
+  try {
+    const body = await request.json();
+
+    const { _id, ...updatedData } = body;
+
+    if (!_id) {
+      return NextResponse.json(
+        { message: "News ID is required" },
+        { status: 400 }
+      );
+    }
+
+    await ensureDBConnection();
+
+    const updatedNews = await News.findByIdAndUpdate(
+      new mongoose.Types.ObjectId(_id),
+      updatedData,
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedNews) {
+      return NextResponse.json({ message: "News not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(
+      { message: "News updated successfully", data: updatedNews },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error updating news:", error);
+    return NextResponse.json(
+      { message: "Failed to update news" },
+      { status: 500 }
+    );
   }
 }
