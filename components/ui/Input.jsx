@@ -34,9 +34,8 @@ const Input = ({
       <input
         {...register(name, validationRules)}
         type={type}
-        className={`w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none transition ${
-          errors?.[name] ? "border-red-500 focus:ring-red-500" : "focus:ring-blue-500"
-        }`}
+        className={`w-full px-4 py-2 bg-gray-950 border border-gray-700 rounded focus:outline-none transition ${errors?.[name] && "border-red-500"
+          }`}
         {...rest}
       />
       {errors?.[name] && <p className="text-sm text-red-500">{errors[name]?.message}</p>}

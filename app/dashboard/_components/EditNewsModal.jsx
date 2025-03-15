@@ -51,7 +51,7 @@ const EditNewsModal = ({ isOpen, onClose, newsItem }) => {
 
                 <Textarea label="News Description" register={register} required errors={errors} name="description" placeholder="Enter News Description..." />
 
-                <FileUpload label="Upload News Banner" onFileChange={setImage} existingImage={newsItem?.image} />
+                <FileUpload label="Upload News Banner" data={image} setData={setImage} />
 
                 <button
                     type="submit"

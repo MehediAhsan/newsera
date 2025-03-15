@@ -32,7 +32,7 @@ const AddNews = () => {
     <>
       <Breadcrumb label="Add News" />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 w-1/2 mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 w-1/2 mx-auto p-6 rounded-lg shadow-lg">
         <Input label="News Headline" register={register} required errors={errors} name="headline" placeholder="Enter News Headline..." />
 
         <Select
@@ -50,7 +50,7 @@ const AddNews = () => {
 
         <button
           type="submit"
-          className="w-full py-3 bg-blue-600 hover:bg-blue-500 transition text-white font-semibold rounded-lg disabled:bg-gray-600"
+          className="w-full py-2 bg-orange-900 hover:bg-orange-800 transition text-white rounded-lg disabled:bg-gray-600"
           disabled={isMutating}
         >
           {isMutating ? "Adding..." : "Add News"}
