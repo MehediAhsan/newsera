@@ -7,13 +7,22 @@ import { FaFacebook, FaGoogle, FaTwitter } from 'react-icons/fa';
 const RegistrationPage = () => {
     const { register, handleSubmit } = useForm();
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (formData) => {
+        console.log(formData);
+        const response = await fetch("/api/auth/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+        alert(data.message);
     };
+
     return (
         <div className='flex justify-center items-center mt-44'>
             <div
-                className="md:w-4/12  rounded shadow flex flex-col justify-between p-3"
+                className="md:w-7/12 lg:w-4/12  rounded shadow flex flex-col justify-between p-3"
             >
                 <form onSubmit={handleSubmit(onSubmit)} className="text-orange-500">
                     <fieldset className="border-2 border-dotted border-gray-500 p-6">

@@ -9,8 +9,22 @@ const LoginPage = () => {
     const { register, handleSubmit } = useForm();
     const [show, setShow] = useState(false)
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (formData) => {
+        console.log(formData);
+
+        const response = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+        if (data.token) {
+            localStorage.setItem("token", data.token);
+            alert("Login successful!");
+        } else {
+            alert(data.message);
+        }
     };
 
     return (
@@ -45,7 +59,7 @@ const LoginPage = () => {
                                 className="w-full p-2 mb-4 mt-1 outline-none ring-none focus:ring-2 focus:ring-orange-500"
                             />
                             {
-                                show ? <IoIosEye className='absolute top-3 right-3 text-2xl text-gray-600 cursor-pointer' onClick={() => setShow(!show)}/> : <IoIosEyeOff className='absolute top-3 right-3 text-2xl text-gray-600 cursor-pointer' onClick={() => setShow(!show)}/>
+                                show ? <IoIosEye className='absolute top-3 right-3 text-2xl text-gray-600 cursor-pointer' onClick={() => setShow(!show)} /> : <IoIosEyeOff className='absolute top-3 right-3 text-2xl text-gray-600 cursor-pointer' onClick={() => setShow(!show)} />
                             }
                         </div>
 

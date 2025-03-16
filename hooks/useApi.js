@@ -49,7 +49,7 @@ export const useApi = (endpoint, method = "GET", options = {}) => {
   return {
     ...queryResult, 
     mutate: mutation.mutate, 
-    isMutating: mutation.isLoading, 
-    error: mutation.error, 
+    isMutating: mutation.isPending, 
+    error: mutation.isError,
   };
 };
