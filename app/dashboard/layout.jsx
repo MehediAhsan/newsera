@@ -1,12 +1,17 @@
 import DashboardSideNav from "@/components/DashboardSiveNav";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
-export default function DashboardLayout({ children }) {
+const DashboardLayout = ({ children }) => {
   return (
-    <div className="flex m-4 gap-4">
-      <DashboardSideNav />
-      <div className="flex-1 bg-gray-950 p-5 rounded min-h-screen">
-        {children}
+    <ProtectedRoute>
+      <div className="flex m-4 gap-4">
+        <DashboardSideNav />
+        <div className="flex-1 bg-gray-950 p-5 rounded min-h-screen">
+          {children}
+        </div>
       </div>
-    </div>
+    </ProtectedRoute>
   );
 }
+
+export default DashboardLayout;

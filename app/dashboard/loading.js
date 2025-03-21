@@ -1,12 +1,12 @@
-import Loader from '@/components/shared/Loader';
-import React from 'react';
+import Loader from "@/components/shared/Loader";
+import React from "react";
 
 const LoadingPage = () => {
-    return (
-        <>
-            <Loader/>
-        </>
-    );
+  return (
+    <>
+      <Loader />
+    </>
+  );
 };
 
 export default LoadingPage;

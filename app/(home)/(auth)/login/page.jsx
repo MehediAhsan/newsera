@@ -1,29 +1,27 @@
 'use client'
+import { loginUser } from '@/redux/slices/authSlice';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaFacebook, FaGoogle, FaTwitter } from 'react-icons/fa';
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
+import { useDispatch, useSelector } from 'react-redux';
 
 const LoginPage = () => {
     const { register, handleSubmit } = useForm();
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(false);
+
+    const dispatch = useDispatch();
+    const { loading, error } = useSelector((state) => state.auth);
+    const router = useRouter();
 
     const onSubmit = async (formData) => {
-        console.log(formData);
-
-        const response = await fetch("/api/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-        });
-
-        const data = await response.json();
-        if (data.token) {
-            localStorage.setItem("token", data.token);
-            alert("Login successful!");
-        } else {
-            alert(data.message);
+        const resultAction = await dispatch(loginUser(formData));
+        console.log(resultAction);
+        console.log(loginUser.fulfilled.match(resultAction));
+        if (loginUser.fulfilled.match(resultAction)) {
+            router.push('/dashboard');
         }
     };
 
