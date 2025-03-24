@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NewsEra
 
-## Getting Started
+## Overview
+The News Website is a modern, full-featured news platform built with **Next.js**, **Tailwind CSS**, and **MongoDB**. Designed for performance and scalability, it provides an engaging user experience with real-time news updates, a user-friendly dashboard, and secure authentication. The platform leverages **server-side rendering (SSR)** for fast content delivery and a **responsive UI** for seamless browsing across all devices.
 
-First, run the development server:
+## Features
+- **Dynamic News Display** – Showcases the latest news articles with images and descriptions.
+- **Responsive Design** – Works seamlessly across all devices (desktop, tablet, mobile).
+- **Smooth Animations** – Hover effects and transition animations for better user engagement.
+- **Optimized Performance** – Fast loading times with Next.js image optimization.
+- **Scrollable News Section** – Allows users to scroll through multiple news articles easily.
+- **Dashboard** –  A dedicated dashboard for managing news articles, including adding, editing, and deleting content.
+- **Analytics & Insights** –  View traffic statistics and engagement metrics for articles.
+- **Authentication with Cookies** –  Secure user authentication using cookies for session management.
+- **Data Fetching with React Query** –  Stores news articles, user accounts, and analytics data efficiently.
+- **MongoDB Database** –  Optimizes API requests, handles caching, and improves loading states for a better user experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech Stack
+- **Next.js** – React-based framework for server-side rendering and performance optimization.
+- **Tailwind CSS** – Utility-first CSS framework for easy styling and responsiveness.
+- **Unsplash API (Optional)** – High-quality images for news articles.
+- **JWT & Cookies** – Secure authentication and authorization using JSON Web Tokens (JWT) stored in cookies.
+- **MongoDB & Mongoose** – NoSQL database for efficient data storage and retrieval.
+
+## Installation
+Follow these steps to set up the project on your local machine:
+
+### 1. Clone the Repository
+```sh
+git clone https://github.com/MehediAhsan/newsera
+cd newsera
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
+```sh
+npm install  # or yarn install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 3. Set Up MongoDB Database
+- Create a MongoDB database using **MongoDB Atlas** or a local instance.
+- Add your **MongoDB connection string** to a `.env.local` file:
+```sh
+MONGODB_URI=mongodb+srv://yourusername:yourpassword@cluster.mongodb.net/newsDB?retryWrites=true&w=majority
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 4. Start the Development Server
+```sh
+npm run dev  # or yarn dev
+```
 
-## Learn More
+The website will be available at `http://localhost:3000/`.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
+To deploy the website, you can use **Vercel**:
+```sh
+vercel
+```
+Or build it manually:
+```sh
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
+Contributions are welcome! To contribute:
+1. Fork the repository.
+2. Create a new branch (`feature/new-feature`).
+3. Commit your changes.
+4. Push to the branch and create a Pull Request.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
+This project is licensed under the **MIT License**.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+🚀 Happy Coding! If you like this project, give it a ⭐ on GitHub!
