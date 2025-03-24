@@ -4,11 +4,11 @@ import BannerRight from './BannerRight';
 
 const Banner = () => {
     return (
-        <div className='grid grid-cols-3 gap-5 my-10'>
+        <div className='md:grid grid-cols-3 gap-5 my-10'>
             <div className='col-span-2'>
                 <BannerLeft />
             </div>
-            <div className='col-span-1'>
+            <div className='col-span-1 max-md:mt-10'>
                 <BannerRight/>
             </div>
         </div>
