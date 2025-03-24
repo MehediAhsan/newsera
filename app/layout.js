@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import ReduxProvider from "@/providers/ReduxProvider";
+import AuthWrapper from "@/providers/AuthWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,9 @@ export default function RootLayout({ children }) {
     <html lang="en" className="bg-black text-white">
       <body className={inter.className}>
         <ReduxProvider>
-          <ReactQueryProvider>{children}</ReactQueryProvider>
+          <AuthWrapper>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
+          </AuthWrapper>
         </ReduxProvider>
       </body>
     </html>

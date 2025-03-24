@@ -1,4 +1,5 @@
 import { cookies } from 'next/headers';
+import jwt from 'jsonwebtoken';
 
 export async function GET() {
   const token = cookies().get('auth_token')?.value;

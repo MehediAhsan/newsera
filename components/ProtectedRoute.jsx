@@ -15,7 +15,7 @@ export default function ProtectedRoute({ children }) {
     }, [user, loading, router]);
 
     if (loading || !user) {
-        return <p>Loading...</p>;
+        return <p></p>;
     }
 
     return children;

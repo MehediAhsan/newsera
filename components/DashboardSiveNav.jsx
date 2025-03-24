@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Link from "next/link";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
@@ -7,9 +7,14 @@ import { BiAddToQueue } from "react-icons/bi";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import { FaAlignLeft } from "react-icons/fa";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "@/redux/slices/authSlice";
+import { useRouter } from "next/navigation";
 
 const DashboardSiveNav = () => {
     const [open, setOpen] = useState(false);
+    const dispatch = useDispatch();
+    const router = useRouter();
 
     const navigation = [
         {
@@ -27,7 +32,7 @@ const DashboardSiveNav = () => {
             name: 'Add News',
             icon: <BiAddToQueue />
         },
-    ]
+    ];
 
     const navsFooter = [
         {
@@ -40,7 +45,13 @@ const DashboardSiveNav = () => {
             name: 'Logout',
             icon: <IoLogOutOutline />
         }
-    ]
+    ];
+
+    // Handle logout
+    const handleLogout = async () => {
+        await dispatch(logoutUser());
+        router.push('/login');
+    };
 
     return (
         <>
@@ -51,10 +62,9 @@ const DashboardSiveNav = () => {
             ></FaAlignLeft>
 
             <nav
-            className={`${
-                open ? "absolute z-40" : "hidden"
-              } w-72 overflow-hidden rounded lg:block bg-gray-950 space-y-8 min-h-screen`}>
-                <div class="flex flex-col h-full">
+                className={`${open ? "absolute z-40" : "hidden"
+                    } w-72 overflow-hidden rounded lg:block bg-gray-950 space-y-8 min-h-screen`}>
+                <div className="flex flex-col h-full">
                     <div className='h-20 flex items-center px-8'>
                         <Link href="/" className='text-xl font-semibold text-primary'>
                             📙 NewsEra
@@ -78,10 +88,13 @@ const DashboardSiveNav = () => {
                                 {
                                     navsFooter.map((item, idx) => (
                                         <li key={idx}>
-                                            <a href={item.href} className="flex items-center gap-x-2 text-gray-300 p-2 rounded-lg  hover:bg-gray-700 duration-150">
+                                            <button
+                                                onClick={item.name === "Logout" ? handleLogout : undefined}
+                                                className="flex items-center gap-x-2 text-gray-300 p-2 rounded-lg hover:bg-gray-700 duration-150 w-full text-left"
+                                            >
                                                 <div className="text-gray-300">{item.icon}</div>
                                                 {item.name}
-                                            </a>
+                                            </button>
                                         </li>
                                     ))
                                 }
