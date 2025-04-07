@@ -43,9 +43,6 @@ export default function BannerLeft() {
           delay: 1500,
           disableOnInteraction: false,
         }}
-        // pagination={{
-        //   clickable: false,
-        // }}
         navigation={true}
         modules={[EffectFade, Autoplay, Pagination, Navigation]}
         className="mySwiper"
