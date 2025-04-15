@@ -1,0 +1,24 @@
+.loader {
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  border-radius: 50%;
+  border: 3px solid gray;
+  border-top-color: transparent;
+  animation: rot1 1.2s linear infinite;
+}
+
+@keyframes rot1 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background: #Ff3e20 !important;
+}
+
+.swiper-pagination-bullet {
+  background: #fefefe !important;
+}
+
