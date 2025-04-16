@@ -6,6 +6,8 @@ import Card from './_components/Card';
 import LatestNews from './_components/LatestNews';
 import SpecialInfo from './_components/SpecialInfo';
 import LatestBlogs from './_components/LatestBlogs';
+import TopRatedNews from './_components/TopRatedNews';
+import BestNews from './_components/BestNews';
 export default function Home() {
   return <main>
     <NewsScroll></NewsScroll>
@@ -27,6 +29,16 @@ export default function Home() {
             height={96}
           />
           <LatestBlogs />
+          <TopRatedNews />
+        </div>
+
+        <div className="col-span-4 my-6">
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="col-span-2 row-span-2">
+              <BestNews />
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
