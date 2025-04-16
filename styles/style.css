@@ -193,7 +193,7 @@
 .trend .swiper-button-prev {
   padding: 13px;
   border: 2px solid #c3c3c3;
-  background-color: #5D5E5C;
+  background-color: #5d5e5c;
   border-radius: 50%;
   top: calc(50% - var(--swiper-navigation-size) / 2) !important;
   left: -10px !important;
@@ -204,7 +204,7 @@
 .trend .swiper-button-next {
   padding: 13px;
   border: 2px solid #c3c3c3;
-  background-color: #5D5E5C;
+  background-color: #5d5e5c;
   border-radius: 50%;
   top: calc(50% - var(--swiper-navigation-size) / 2) !important;
   right: -10px !important;
@@ -219,7 +219,6 @@
 .trend .swiper-button-next:hover {
   color: #efc378;
 }
-
 
 .bannerSwiper {
   .swiper-pagination {
@@ -249,5 +248,30 @@
     cursor: pointer;
     opacity: 1;
     background-color: #ec2000 !important;
+  }
+}
+
+.recentSwiper {
+  .swiper-pagination {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: #232f3e;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet:hover {
+    background-color: #ec2000;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #ec2000 !important;
+    width: 32px;
+    height: 6px;
   }
 }

@@ -26,7 +26,7 @@ const LatestBlogs = () => {
     ]
     return (
         <div className='relative'>
-            <h1 className='left-news-title absolute w-full'>Latest Blogs</h1>
+            <h1 className='left-news-title'>Latest Blogs</h1>
             <div className=''>
                 <Swiper
                     modules={[Autoplay, Pagination]}

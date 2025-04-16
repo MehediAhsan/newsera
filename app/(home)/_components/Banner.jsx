@@ -1,5 +1,5 @@
 import React from 'react';
-import BannerLeft from './BannerLeft'
+import BannerLeft from './BannerLeft';
 import BannerRight from './BannerRight';
 
 const Banner = () => {
@@ -9,7 +9,7 @@ const Banner = () => {
                 <BannerLeft />
             </div>
             <div className='col-span-1 max-md:mt-10'>
-                <BannerRight/>
+                <BannerRight />
             </div>
         </div>
     );

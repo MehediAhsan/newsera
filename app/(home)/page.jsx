@@ -1,6 +1,4 @@
 import NewsScroll from '@/components/NewsScroll';
-import Banner from '@/components/home/Banner';
-import InternationalNews from '@/components/home/InternationalNews';
 import TopStories from './_components/TopStories';
 import Card from './_components/Card';
 import LatestNews from './_components/LatestNews';
@@ -12,11 +10,13 @@ import Coupon from './_components/Coupon';
 import DailyNews from './_components/DailyNews';
 import TrendingNews from './_components/TrendingNews';
 import Subscribe from './_components/Subscribe';
+import InternationalNews from './_components/InternationalNews';
+import Banner from './_components/Banner';
 export default function Home() {
   return <main className='container mx-auto'>
     <NewsScroll></NewsScroll>
     <div className="mx-10">
-      <Banner></Banner>
+      <Banner />
       <InternationalNews />
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
