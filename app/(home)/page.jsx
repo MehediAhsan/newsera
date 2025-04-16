@@ -8,6 +8,8 @@ import SpecialInfo from './_components/SpecialInfo';
 import LatestBlogs from './_components/LatestBlogs';
 import TopRatedNews from './_components/TopRatedNews';
 import BestNews from './_components/BestNews';
+import Coupon from './_components/Coupon';
+import DailyNews from './_components/DailyNews';
 export default function Home() {
   return <main>
     <NewsScroll></NewsScroll>
@@ -37,6 +39,24 @@ export default function Home() {
             <div className="col-span-2 row-span-2">
               <BestNews />
             </div>
+            <div className="md:col-span-2 lg:col-span-1 flex flex-row justify-between lg:flex-col gap-6">
+              <Card
+                img="https://images.unsplash.com/photo-1682364853446-db043f643207?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                height={"h-[200px]"}
+              />
+              <Card
+                img="https://images.unsplash.com/photo-1525904097878-94fb15835963?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                height={"h-[200px]"}
+              />
+            </div>
+          </div>
+
+          <div className="my-6 hidden lg:block">
+            <Coupon />
+          </div>
+
+          <div>
+            <DailyNews />
           </div>
 
         </div>
