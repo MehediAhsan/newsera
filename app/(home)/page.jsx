@@ -11,13 +11,14 @@ import BestNews from './_components/BestNews';
 import Coupon from './_components/Coupon';
 import DailyNews from './_components/DailyNews';
 import TrendingNews from './_components/TrendingNews';
+import Subscribe from './_components/Subscribe';
 export default function Home() {
-  return <main>
+  return <main className='container mx-auto'>
     <NewsScroll></NewsScroll>
-    <Banner></Banner>
-    <InternationalNews />
-    <TopStories />
     <div className="mx-10">
+      <Banner></Banner>
+      <InternationalNews />
+
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
 
         <div className="col-span-1 flex flex-col gap-5">
@@ -66,9 +67,10 @@ export default function Home() {
           />
 
           <TrendingNews />
-
         </div>
       </div>
+      <TopStories />
     </div>
+    <Subscribe />
   </main>;
 }

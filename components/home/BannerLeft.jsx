@@ -26,10 +26,16 @@ export default function BannerLeft() {
       heading: "Artificial intelligence (AI) is the intelligence of machines or software...",
       des: "10 may, 2023",
     },
+    {
+      id: 3,
+      img: "https://images.unsplash.com/photo-1525338078858-d762b5e32f2c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      heading: "Artificial intelligence (AI) is the intelligence of machines or software...",
+      des: "10 may, 2023",
+    },
   ];
 
   return (
-    <>
+    <div>
       <Swiper
         spaceBetween={30}
         style={{
@@ -37,47 +43,47 @@ export default function BannerLeft() {
           "--swiper-navigation-size": "35px"
         }}
         // effect={'fade'}
+        pagination={{ clickable: true }}
         centeredSlides={true}
         loop={true}
         autoplay={{
-          delay: 1500,
-          disableOnInteraction: false,
+          delay: 5000,
+          disableOnInteraction: true,
         }}
         navigation={true}
         modules={[EffectFade, Autoplay, Pagination, Navigation]}
-        className="mySwiper"
+        className="bannerSwiper mySwiper"
       >
-        {data.map((dt, i) => {
+        {data.map((dt, _) => {
           return (
             <SwiperSlide key={dt.id}>
               <div
-                className="relative flex flex-col justify-center overflow-hidden bg-gray-50"
+                className="relative"
               >
-                <div className="absolute inset-0 bg-center bg-black"></div>
-                <div className="group relative flex shadow-xl ring-gray-900/5">
-                  <div className="z-10 h-full w-full overflow-hidden opacity-80 transition duration-300 ease-in-out group-hover:opacity-100">
-                    <Image
-                      src={dt.img}
-                      className="animate-fade-in block h-96 w-full scale-100 transform object-cover object-center opacity-100 transition duration-300"
-                      alt=""
-                      height={300}
-                      width={300}
-                    />
-                  </div>
-                  <div className="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110 w-8/12">
-                    <h1 className="font-serif text-2xl font-bold text-white shadow-xl">
-                      {dt.heading}
-                    </h1>
-                    <h1 className="text-sm font-light text-gray-200 shadow-xl">
-                      {dt.des}
-                    </h1>
-                  </div>
+                <div className="absolute inset-0 bg-center bg-gradient-to-t from-black/90 to-black/0 z-40 w-full"></div>
+
+                <div className="h-full w-full">
+                  <Image
+                    src={dt.img}
+                    className="h-[400px] w-full object-cover opacity-100"
+                    alt="Image"
+                    height={500}
+                    width={1000}
+                  />
+                </div>
+                <div className="absolute bottom-0 z-50 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110 w-8/12">
+                  <h1 className="font-serif text-2xl font-bold text-white">
+                    {dt.heading}
+                  </h1>
+                  <h1 className="text-sm font-light text-gray-200">
+                    {dt.des}
+                  </h1>
                 </div>
               </div>
             </SwiperSlide>
           );
         })}
       </Swiper>
-    </>
+    </div>
   );
 }

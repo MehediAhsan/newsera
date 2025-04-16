@@ -219,3 +219,35 @@
 .trend .swiper-button-next:hover {
   color: #efc378;
 }
+
+
+.bannerSwiper {
+  .swiper-pagination {
+    display: flex;
+    justify-content: end;
+  }
+
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff !important;
+    border-radius: 0px;
+    margin: 0 5px;
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet:hover {
+    background-color: #ec2000;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 24px;
+    height: 8px;
+    border-radius: 0px;
+    margin: 0 5px;
+    cursor: pointer;
+    opacity: 1;
+    background-color: #ec2000 !important;
+  }
+}
