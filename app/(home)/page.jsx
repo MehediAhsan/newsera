@@ -4,6 +4,8 @@ import InternationalNews from '@/components/home/InternationalNews';
 import TopStories from './_components/TopStories';
 import Card from './_components/Card';
 import LatestNews from './_components/LatestNews';
+import SpecialInfo from './_components/SpecialInfo';
+import LatestBlogs from './_components/LatestBlogs';
 export default function Home() {
   return <main>
     <NewsScroll></NewsScroll>
@@ -19,6 +21,12 @@ export default function Home() {
             height={96}
           />
           <LatestNews />
+          <SpecialInfo />
+          <Card
+            img="https://images.unsplash.com/photo-1559631658-9705048d977e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            height={96}
+          />
+          <LatestBlogs />
         </div>
       </div>
     </div>
