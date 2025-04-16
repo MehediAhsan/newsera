@@ -36,7 +36,7 @@ const DailyNewsCard = ({
                                 Add to whitelist
                             </span>
                         </div>
-                        <div className={`group relative bg-fourth  transition-colors duration-500 ease-in-out hover:bg-primary p-[6px] rounded font-bold text-xs flex gap-1 animate-[horizontalWave_0.9s_ease-in-out]`}>
+                        <div className={`group relative bg-fourth transition-colors duration-500 ease-in-out hover:bg-primary p-[6px] rounded font-bold text-xs flex gap-1 animate-[horizontalWave_0.9s_ease-in-out]`}>
                             <ImEye />
                             <span className={`absolute w-16 p-1 -z-10 rounded-e bg-fourth top-0 left-0 group-hover:left-5 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-500 ease-in-out group-hover:bg-primary`}>
                                 Preview

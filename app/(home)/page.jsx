@@ -10,6 +10,7 @@ import TopRatedNews from './_components/TopRatedNews';
 import BestNews from './_components/BestNews';
 import Coupon from './_components/Coupon';
 import DailyNews from './_components/DailyNews';
+import TrendingNews from './_components/TrendingNews';
 export default function Home() {
   return <main>
     <NewsScroll></NewsScroll>
@@ -58,6 +59,13 @@ export default function Home() {
           <div>
             <DailyNews />
           </div>
+
+          <Card
+            img="https://images.unsplash.com/photo-1708381487798-87f5d211b655?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            height={"h-28"}
+          />
+
+          <TrendingNews />
 
         </div>
       </div>

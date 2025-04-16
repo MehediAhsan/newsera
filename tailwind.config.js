@@ -17,7 +17,9 @@ module.exports = {
         muted: "#D3D3D3",
         secondary: "#eaebe6",
         third: "#BBBCB8",
-        fourth: "#5D5E5C"
+        fourth: "#5D5E5C",
+        fifth: "#373837",
+        sixth: "#252524"
       },
     },
   },

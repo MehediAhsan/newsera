@@ -28,3 +28,30 @@ export const latestNewsItems = [
         title: "14 April, Pohela Boishak",
     },
 ]
+
+export const categories = [
+    {
+        name: 'All',
+        id: 1
+    }, 
+    {
+        name: 'International',
+        id: 1
+    }, 
+    {
+        name: 'Sports',
+        id: 1
+    }, 
+    {
+        name: 'Health',
+        id: 1
+    }, 
+    {
+        name: 'Entertainment',
+        id: 1
+    }, 
+    {
+        name: 'Social',
+        id: 1
+    }
+]
