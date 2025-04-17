@@ -1,22 +1,42 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSelector } from 'react-redux';
+import { checkAuth } from '@/redux/slices/authSlice';
+import Loader from './shared/Loader';
 
-export default function ProtectedRoute({ children }) {
-    const { user, loading } = useSelector((state) => state.auth);
+const ProtectedRoute = ({ children }) => {
+    const dispatch = useDispatch();
     const router = useRouter();
 
+    const { user, loading } = useSelector((state) => state.auth);
+
+    const [authChecked, setAuthChecked] = useState(false);
+
     useEffect(() => {
-        if (!loading && !user) {
+        if (!user?.userId) {
+            const check = async () => {
+                await dispatch(checkAuth());
+                setAuthChecked(true);
+            };
+            check();
+        } else {
+            setAuthChecked(true);
+        }
+    }, [dispatch, user]);
+
+    useEffect(() => {
+        if (authChecked && !loading && !user?.userId) {
             router.push('/login');
         }
-    }, [user, loading, router]);
+    }, [authChecked, loading, user, router]);
 
-    if (loading || !user) {
-        return <p></p>;
+    if (!authChecked || loading) {
+        return <Loader />;
     }
 
     return children;
-}
+};
+
+export default ProtectedRoute;

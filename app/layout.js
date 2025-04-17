@@ -3,7 +3,6 @@ import "./globals.css";
 import "../styles/style.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import ReduxProvider from "@/providers/ReduxProvider";
-import AuthWrapper from "@/providers/AuthWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="bg-black text-white">
       <body className={inter.className}>
         <ReduxProvider>
-          <AuthWrapper>
-            <ReactQueryProvider>{children}</ReactQueryProvider>
-          </AuthWrapper>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
         </ReduxProvider>
       </body>
     </html>
