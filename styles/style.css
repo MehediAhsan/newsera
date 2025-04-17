@@ -253,25 +253,31 @@
 
 .recentSwiper {
   .swiper-pagination {
+    position: absolute;
+    top: 0 !important;
+    right: 0;
+    left: auto !important;
+    width: auto !important;
+    height: 10px !important;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
   }
 
   .swiper-pagination-bullet {
-    background-color: #232f3e;
+    background-color: #9d9895 !important;
     border-radius: 6px;
     cursor: pointer;
     opacity: 1;
   }
 
   .swiper-pagination-bullet:hover {
-    background-color: #ec2000;
+    background-color: #d07c6f !important;
   }
 
   .swiper-pagination-bullet-active {
-    background-color: #ec2000 !important;
-    width: 32px;
+    background-color: #f9f4f3 !important;
+    width: 24px;
     height: 6px;
   }
 }

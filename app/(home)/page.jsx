@@ -14,8 +14,8 @@ import InternationalNews from './_components/InternationalNews';
 import Banner from './_components/Banner';
 export default function Home() {
   return <main className='container mx-auto'>
-    <NewsScroll></NewsScroll>
-    <div className="mx-10">
+    <div className="mx-6">
+      <NewsScroll></NewsScroll>
       <Banner />
       <InternationalNews />
 
