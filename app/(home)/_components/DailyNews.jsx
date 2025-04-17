@@ -9,7 +9,7 @@ const DailyNews = () => {
     return (
         <div className='my-10 relative daily'>
             <button className='btn-secondary'>Daily News</button>
-            <div className='bg-fourth w-full h-[1.4px] -mt-[1.4px] mb-10'>
+            <div className='bg-sixth w-full h-[1.4px] -mt-[1.4px] mb-10'>
             </div>
             <Swiper
                 slidesPerView={1}

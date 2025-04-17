@@ -16,17 +16,17 @@ const TrendingNews = () => {
             <div>
                 <div className='flex justify-between items-end'>
                     <button className='btn-secondary'>Trending News</button>
-                    <ul className='lg:flex gap-5 text-sm mb-[2px] hidden'>
+                    <ul className='lg:flex gap-5 text-sm mb-[2px] hidden uppercase'>
                         {
                             categories.map((category, i) => <li key={i} className='group cursor-pointer hover:text-primary'>
                                 {category.name}
-                                <div className='h-[2px] mt-2 w-0 bg-primary group-hover:w-full transition-all duration-500'></div>
+                                <div className={`h-[2px] mt-2 w-0 bg-primary group-hover:w-full transition-all duration-500 ${i === 0 ? 'w-full' : ''}`}></div>
                             </li>
                             )
                         }
                     </ul>
                 </div>
-                <div className='bg-fourth w-full h-[1.4px] -mt-[1.4px] mb-10'>
+                <div className='bg-sixth w-full h-[1.4px] -mt-[1.4px] mb-10'>
                 </div>
             </div>
 

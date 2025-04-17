@@ -12,18 +12,31 @@ const BestNews = () => {
 
     const items = [
         {
-            img: "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            img: "/assets/news/olympics.jpg",
+            keyword: 'sports',
+            heading: "Olympic committee unveils new rules for upcoming games...",
+            des: "13 Apr, 2025",
         },
         {
-            img: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            img: "/assets/news/health.jpg",
+            keyword: 'health',
+            heading: "Breakthrough in cancer research offers new hope to patients...",
+            des: "12 Apr, 2025",
         },
         {
-            img: "https://images.unsplash.com/photo-1584798448292-5e7ba13a0826?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            img: "/assets/news/space.jpg",
+            keyword: 'science',
+            heading: "New telescope discovers Earth-like planet in nearby galaxy...",
+            des: "11 Apr, 2025",
         },
         {
-            img: "https://plus.unsplash.com/premium_photo-1672883551967-ab11316526b4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            img: "/assets/news/economy.jpg",
+            keyword: 'economy',
+            heading: "Stock markets rally after central bank rate cut announcement...",
+            des: "10 Apr, 2025",
         },
-    ]
+    ];
+
 
     return (
         <div>
@@ -42,7 +55,24 @@ const BestNews = () => {
                 {
                     items.map((item, index) => (
                         <SwiperSlide key={index}>
-                            <Image src={item.img} className='w-full object-cover h-[424px]' height={100} width={1000} alt='best deal today' />
+                            <div
+                                className="relative"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-t from-black to-black/20 z-40 w-full"></div>
+
+                                <div className="h-full w-full">
+                                    <Image src={item.img} className='w-full object-cover h-[424px]' height={100} width={1000} alt='Image' loading='lazy' />
+                                </div>
+                                <div className="absolute bottom-0 z-50 m-0 pb-10 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110 w-8/12">
+                                    <h1 className="text-sm font-light text-third mb-4">
+                                        <span className="bg-primary text-xs p-1 uppercase font-semibold mr-2 text-secondary">{item.keyword}</span>{item.des}
+                                    </h1>
+                                    <h1 className="font-serif text-2xl font-bold text-secondary">
+                                        {item.heading}
+                                    </h1>
+                                </div>
+                            </div>
+
                         </SwiperSlide>
                     ))
                 }

@@ -23,7 +23,7 @@ export default function Home() {
 
         <div className="col-span-1 flex flex-col gap-5">
           <Card
-            img="https://images.unsplash.com/photo-1521488674203-62bf581664be?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            img="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             height={96}
           />
           <LatestNews />
@@ -36,18 +36,18 @@ export default function Home() {
           <TopRatedNews />
         </div>
 
-        <div className="col-span-4 my-6">
+        <div className="col-span-4">
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="col-span-2 row-span-2">
               <BestNews />
             </div>
             <div className="md:col-span-2 lg:col-span-1 flex flex-row justify-between lg:flex-col gap-6">
               <Card
-                img="https://images.unsplash.com/photo-1682364853446-db043f643207?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                img="https://images.unsplash.com/photo-1620231151090-fdda59dc7832?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 height={"h-[200px]"}
               />
               <Card
-                img="https://images.unsplash.com/photo-1525904097878-94fb15835963?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                img="https://images.unsplash.com/photo-1461897104016-0b3b00cc81ee?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 height={"h-[200px]"}
               />
             </div>
