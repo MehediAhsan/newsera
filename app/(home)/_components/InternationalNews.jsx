@@ -54,7 +54,7 @@ const InternationalNews = () => {
     ];
 
     return (
-        <div className='my-24 relative news'>
+        <div className='my-20 relative news'>
             <div className='mb-10'>
                 <button className='bg-sixth px-3 py-2 border-b border-fourth font-medium -skew-x-6 text-secondary'>
                     Most Viewed
