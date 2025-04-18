@@ -56,8 +56,8 @@ const InternationalNews = () => {
     return (
         <div className='my-24 relative news'>
             <div className='mb-10'>
-                <button className='bg-gray-900 p-2 border-b border-primary font-medium -skew-x-6 text-muted'>
-                    International News
+                <button className='bg-sixth px-3 py-2 border-b border-fourth font-medium -skew-x-6 text-secondary'>
+                    Most Viewed
                 </button>
             </div>
             <Swiper
@@ -88,24 +88,22 @@ const InternationalNews = () => {
                 {newsItems.map((item) => (
                     <SwiperSlide key={item.id}>
                         <div className="relative">
-                            <div className='absolute h-64 w-full bg-black opacity-60 z-1'></div>
+                            <div className='absolute h-full w-full bg-gradient-to-t from-black to-black/30 z-1'></div>
                             <div className="block rounded">
                                 <Image
-                                    className="rounded h-64 object-cover w-full"
+                                    className="rounded h-52 object-cover w-full"
                                     src={item.img}
                                     alt={item.title}
-                                    width={400}
-                                    height={256}
+                                    width={1000}
+                                    height={500}
+                                    loading='lazy'
                                 />
                                 <div className="absolute bottom-0 p-7">
-                                    <h5 className="mb-2 text-xl font-medium leading-tight text-white">
+                                    <h5 className="mb-3 text-xl font-medium leading-tight text-white underline">
                                         {item.title}
                                     </h5>
-                                    <p className="mb-4 text-base text-gray-200">
-                                        {item.description}
-                                    </p>
                                     <p className="text-sm text-gray-300">
-                                        <small>Last updated: {item.date}</small>
+                                        <small><span className='bg-primary text-secondary px-2 py-0.5 font-semibold text-xs uppercase mr-1'>{item?.title.split(' ')[0]}</span>Last updated: {item.date}</small>
                                     </p>
                                 </div>
                             </div>
