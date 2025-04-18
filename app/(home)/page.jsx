@@ -17,8 +17,6 @@ export default function Home() {
     <div className="mx-6">
       <NewsScroll></NewsScroll>
       <Banner />
-      <InternationalNews />
-
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
 
         <div className="col-span-1 flex flex-col gap-5">
@@ -37,6 +35,8 @@ export default function Home() {
         </div>
 
         <div className="col-span-4">
+
+          <TrendingNews />
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="col-span-2 row-span-2">
               <BestNews />
@@ -62,13 +62,13 @@ export default function Home() {
           </div>
 
           <Card
-            img="https://images.unsplash.com/photo-1708381487798-87f5d211b655?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            height={"h-28"}
+            img="https://images.unsplash.com/photo-1659984778177-7449fdfa42db?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            height={"h-52"}
           />
 
-          <TrendingNews />
         </div>
       </div>
+      <InternationalNews />
       <TopStories />
     </div>
     <Subscribe />

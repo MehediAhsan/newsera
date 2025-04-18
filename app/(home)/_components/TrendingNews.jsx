@@ -12,7 +12,7 @@ import Card from './Card';
 const TrendingNews = () => {
     const data = [1, 2, 3, 4, 5, 6, 7, 8]
     return (
-        <div className='mt-12'>
+        <div className=''>
             <div>
                 <div className='flex justify-between items-end'>
                     <button className='btn-secondary'>Trending News</button>
@@ -58,7 +58,7 @@ const TrendingNews = () => {
                     {
                         data.map((_, i) => <SwiperSlide key={i}>
                             <div className='space-y-6'>
-                                <TrendingNewsCard img={"https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} rating={i % 2 === 0} />
+                                <TrendingNewsCard img={"https://images.unsplash.com/photo-1567057419565-4349c49d8a04?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} rating={i % 2 === 0} />
                                 <TrendingNewsCard rating={i % 2 !== 0} />
                             </div>
                         </SwiperSlide>)
@@ -70,19 +70,19 @@ const TrendingNews = () => {
 
             <div className='grid grid-cols-4 gap-5 my-16'>
                 <div>
-                    <Card img={"https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} height={100} />
+                    <Card img={"https://images.unsplash.com/photo-1580922110301-a666f6745565?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} height={100} />
                 </div>
-                <div className='col-span-2 row-span-2'>
-                    <Card img={"https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} height={100} />
-                </div>
-                <div>
-                    <Card img={"https://images.unsplash.com/photo-1575320975929-e746674947a0?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} height={100} />
+                <div className='col-span-2 row-span-2 h-full'>
+                    <Card img={"https://images.unsplash.com/photo-1569863959165-56dae551d4fc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} height={100} />
                 </div>
                 <div>
-                    <Card img={"https://images.unsplash.com/photo-1555487505-8603a1a69755?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} height={100} />
+                    <Card img={"https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} height={100} />
                 </div>
                 <div>
-                    <Card img={"https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} height={100} />
+                    <Card img={"https://images.unsplash.com/photo-1605776988089-105148e14767?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} height={100} />
+                </div>
+                <div>
+                    <Card img={"https://images.unsplash.com/photo-1619177383949-f03975e50b19?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} height={100} />
                 </div>
             </div>
         </div >

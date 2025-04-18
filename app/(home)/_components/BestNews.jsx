@@ -67,7 +67,7 @@ const BestNews = () => {
                                     <h1 className="text-sm font-light text-third mb-4">
                                         <span className="bg-primary text-xs p-1 uppercase font-semibold mr-2 text-secondary">{item.keyword}</span>{item.des}
                                     </h1>
-                                    <h1 className="font-serif text-2xl font-bold text-secondary">
+                                    <h1 className="font-serif text-2xl font-bold text-secondary underline">
                                         {item.heading}
                                     </h1>
                                 </div>
