@@ -14,7 +14,7 @@ const Breadcrumb = ({ label }) => {
                         >
                             Dashboard
                         </Link>
-                        <ChevronRight className="w-4 h-4 mx-2" />
+                        <ChevronRight className="w-4 h-4 mx-2 text-third" />
                     </li>
                     <li className="flex items-center">
                         <Link

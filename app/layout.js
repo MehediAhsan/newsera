@@ -33,13 +33,11 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#000000" />
       </head>
       <body className={inter.className}>
-        <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen">
           <ThemeProvider>
             <ReduxProvider>
               <ReactQueryProvider>{children}</ReactQueryProvider>
             </ReduxProvider>
           </ThemeProvider>
-        </div>
       </body>
     </html>
   );
