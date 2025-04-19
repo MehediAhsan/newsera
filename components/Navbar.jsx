@@ -45,7 +45,6 @@ const Navbar = () => {
     const [state, setState] = useState(false)
     const [drapdownState, setDrapdownState] = useState({ isActive: false, idx: null })
 
-    // Replace javascript:void(0) paths with your paths
     const navigation = [
         { title: "Home", path: "/", isDrapdown: false },
         { title: "News", path: "javascript:void(0)", isDrapdown: true, navs: dropdownNavs },
@@ -91,8 +90,8 @@ const Navbar = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className={`nav-menu uppercase pb-3 mt-8 md:block text-start w-full md:w-auto md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}>
-                            <ul className="items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
+                        <div className={`nav-menu uppercase dark:text-secondary pb-3 mt-8 md:block text-start w-full md:w-auto md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}>
+                            <ul className="items-center space-y-6 md:flex md:space-x-6 md:space-y-0 relative">
                                 {
                                     navigation.map((item, idx) => {
                                         return (
@@ -119,12 +118,11 @@ const Navbar = () => {
                                                 }
                                                 {
                                                     item.isDrapdown && drapdownState.idx == idx && drapdownState.isActive ? (
-                                                        <div className="mt-6 top-[120px] z-50 md:right-20 lg:right-20 md:absolute  md:border-x md:border-primary md:shadow-md md:mt-0 w-auto md:w-[450px] lg:w-[600px] bg-white dark:bg-black">
-                                                            <ul className='max-w-screen-xl grid items-center gap-6 md:px-8 md:grid-cols-1 lg:grid-cols-2'>
+                                                        <div className="mt-6 md:top-10 z-50 md:left-20 md:absolute md:border-x md:border-b md:border-primary md:shadow-md md:mt-0 w-auto bg-white dark:bg-black">
+                                                            <ul className='max-w-screen-xl grid items-center gap-x-10 gap-y-5 md:p-4 md:grid-cols-1 lg:grid-cols-2'>
                                                                 {dropdownNavs.map((navItem, idx) => (
                                                                     <Link key={idx} href={navItem.path} onclick={() => setDrapdownState({ isActive: false, idx: null })}>
-                                                                        <li className="group flex items-center gap-2  px-4 py-2 rounded cursor-pointer">
-                                                                            {/* <FaAngleDown/> */}
+                                                                        <li className="group flex items-center gap-2  px-2 py-1 rounded cursor-pointer">
                                                                             <span className="duration-200 text-sm font-medium">{navItem.title}</span>
                                                                         </li>
                                                                     </Link>

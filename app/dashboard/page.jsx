@@ -1,11 +1,11 @@
-import Overview from '@/components/dashboardComponents/Overview';
 import React from 'react';
+import Overview from './_components/Overview';
 
 const DashboardPage = () => {
     return (
-        <div>
-            <Overview/>
-        </div>
+        <>
+            <Overview />
+        </>
     );
 };
 

@@ -47,7 +47,6 @@ const DashboardSiveNav = () => {
         }
     ];
 
-    // Handle logout
     const handleLogout = async () => {
         await dispatch(logoutUser());
         router.push('/login');
@@ -63,7 +62,7 @@ const DashboardSiveNav = () => {
 
             <nav
                 className={`${open ? "absolute z-40" : "hidden"
-                    } w-72 overflow-hidden rounded lg:block bg-gray-950 space-y-8 min-h-screen`}>
+                    } w-72 overflow-hidden rounded lg:block bg-black space-y-8 fixed top-0 left-0 h-screen`}>
                 <div className="flex flex-col h-full">
                     <div className='h-20 flex items-center px-8'>
                         <Link href="/" className='text-xl font-semibold text-primary'>

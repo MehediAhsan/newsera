@@ -4,9 +4,9 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 const DashboardLayout = ({ children }) => {
   return (
     <ProtectedRoute>
-      <div className="flex p-4 gap-4 bg-black">
+      <div className="bg-gray-950 min-h-screen">
         <DashboardSideNav />
-        <div className="flex-1 bg-gray-950 p-5 rounded min-h-screen">
+        <div className="bg-black p-5 rounded min-h-screen overflow-y-auto lg:ml-[300px]">
           {children}
         </div>
       </div>
