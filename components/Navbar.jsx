@@ -65,7 +65,7 @@ const Navbar = () => {
     return (
         <>
             <div className="absolute inset-0 z-50 h-16">
-                <nav className={`relative z-20 opacity-95 w-full md:static md:text-sm md:border-none shadow ${state ? "shadow-lg rounded-b-xl md:shadow-none" : ""}`}>
+                <nav className={`relative z-20 opacity-95 w-full md:static md:text-sm md:border-none max-md:shadow ${state ? "shadow-lg rounded-b-xl md:shadow-none" : ""}`}>
                     <Header></Header>
                     <div className="flex flex-col md:flex-row md:justify-around items-center px-4 py-2 md:py-0 max-w-screen-xl md:px-8">
                         <div className="flex items-center justify-between md:py-5 md:block w-full md:w-auto">
@@ -91,7 +91,7 @@ const Navbar = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className={`nav-menu text-white uppercase pb-3 mt-8 md:block text-start w-full md:w-auto md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}>
+                        <div className={`nav-menu uppercase pb-3 mt-8 md:block text-start w-full md:w-auto md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}>
                             <ul className="items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
                                 {
                                     navigation.map((item, idx) => {
@@ -119,7 +119,7 @@ const Navbar = () => {
                                                 }
                                                 {
                                                     item.isDrapdown && drapdownState.idx == idx && drapdownState.isActive ? (
-                                                        <div className="mt-6 top-[120px] z-50 md:right-20 lg:right-20 md:absolute  md:border-x md:border-primary md:shadow-md md:mt-0 w-auto md:w-[450px] lg:w-[600px] bg-black">
+                                                        <div className="mt-6 top-[120px] z-50 md:right-20 lg:right-20 md:absolute  md:border-x md:border-primary md:shadow-md md:mt-0 w-auto md:w-[450px] lg:w-[600px] bg-white dark:bg-black">
                                                             <ul className='max-w-screen-xl grid items-center gap-6 md:px-8 md:grid-cols-1 lg:grid-cols-2'>
                                                                 {dropdownNavs.map((navItem, idx) => (
                                                                     <Link key={idx} href={navItem.path} onclick={() => setDrapdownState({ isActive: false, idx: null })}>

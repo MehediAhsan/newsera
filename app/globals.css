@@ -36,11 +36,11 @@
   }
 
   .news-name {
-    @apply text-[14px] leading-[18px] text-white capitalize font-normal hover:text-primary;
+    @apply text-[14px] leading-[18px] capitalize font-normal hover:text-primary;
   }
 
   .left-news-title {
-    @apply text-[16px] font-semibold uppercase border-b-2 border-third pb-1 text-secondary;
+    @apply text-[16px] font-semibold uppercase border-b-2 border-third pb-1 text-sixth dark:text-secondary;
   }
 }
 

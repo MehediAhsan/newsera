@@ -8,7 +8,7 @@ const TopStories = () => {
     return (
         <div className='mb-20'>
             <div className='mb-5'>
-                <h1 className='text-secondary text-xl md:text-2xl font-semibold mb-2 uppercase'>Top Stories</h1>
+                <h1 className='text-fifth dark:text-secondary text-xl md:text-2xl font-semibold mb-2 uppercase'>Top Stories</h1>
                 <div className='flex'>
                     <div className='bg-primary h-1 w-14' />
                     <div className='h-1 border-y border-r border-fourth w-full' />
@@ -45,12 +45,12 @@ const TopStories = () => {
                         </div>
                     </div>
                     <div className='text-center mt-3 px-5 md:px-10'>
-                        <h1 className='text-lg font-semibold text-light'>All The Red Carpet Looks From The 2016
+                        <h1 className='text-lg font-semibold dark:text-light'>All The Red Carpet Looks From The 2016
                             Critics’ Business Awards</h1>
-                        <p className='text-third mt-2 text-sm'>Sed cursus eget risus non vestibulum. Sed in molestie elit, vitae condimentum justo. Aenean vulputate leo metus, sed imperdiet lorem fermentum et metus, sed imperdiet .</p>
+                        <p className='dark:text-third mt-2 text-sm'>Sed cursus eget risus non vestibulum. Sed in molestie elit, vitae condimentum justo. Aenean vulputate leo metus, sed imperdiet lorem fermentum et metus, sed imperdiet .</p>
                     </div>
                 </div>
-                <div className='col-span-1 flex flex-col gap-4 text-muted'>
+                <div className='col-span-1 flex flex-col gap-4 dark:text-muted'>
                     {
                         Array.from({ length: 4 }).map((_, i) => (
                             <div key={i} className='flex gap-2 border-b border-gray-600 pb-3'>

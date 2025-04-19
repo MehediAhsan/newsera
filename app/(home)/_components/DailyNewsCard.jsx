@@ -14,11 +14,11 @@ const DailyNewsCard = ({
 
     return (
         <div
-            className='grid grid-cols-2 gap-10 text-secondary mb-16 items-center'
+            className='grid grid-cols-2 gap-10 text-fifth dark:text-secondary mb-16 items-center'
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
         >
-            <div className='bg-sixth p-4 relative'>
+            <div className='bg-secondary dark:bg-sixth p-4 relative'>
                 <div className='z-[15] hover:cursor-pointer text-white'>
                     <div
                         className={`absolute z-20 left-2 top-7 flex flex-col gap-2 ${isHover ? 'block' : 'hidden'
@@ -67,25 +67,25 @@ const DailyNewsCard = ({
 
                 <div className='flex gap-5'>
                     <div className='flex flex-col items-center'>
-                        <p className={`bg-dark rounded-full size-8 p-1 text-center`}>
+                        <p className={`bg-dark rounded-full size-8 p-1 text-center text-secondary`}>
                             20
                         </p>
                         <p className='text-xs uppercase mt-1'>Days</p>
                     </div>
                     <div className='flex flex-col items-center'>
-                        <p className={`bg-dark rounded-full size-8 p-1 text-center`}>
+                        <p className={`bg-dark rounded-full size-8 p-1 text-center text-secondary`}>
                             6
                         </p>
                         <p className='text-xs uppercase mt-1'>Hours</p>
                     </div>
                     <div className='flex flex-col items-center'>
-                        <p className={`bg-dark rounded-full size-8 p-1 text-center`}>
+                        <p className={`bg-dark rounded-full size-8 p-1 text-center text-secondary`}>
                             44
                         </p>
                         <p className='text-xs uppercase mt-1'>Mins</p>
                     </div>
                     <div className='flex flex-col items-center'>
-                        <p className={`bg-dark rounded-full size-8 p-1 text-center`}>
+                        <p className={`bg-dark rounded-full size-8 p-1 text-center text-secondary`}>
                             43
                         </p>
                         <p className='text-xs uppercase mt-1'>Secs</p>

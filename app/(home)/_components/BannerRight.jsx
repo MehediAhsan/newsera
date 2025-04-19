@@ -88,10 +88,10 @@ const BannerRight = () => {
                                                     loading='lazy'
                                                 />
                                                 <div className='flex flex-col justify-center'>
-                                                    <h1 className="text-sm font-light text-third mb-2">
+                                                    <h1 className="text-sm font-light text-fifth dark:text-third mb-2">
                                                         <span className="bg-primary text-xs p-1 uppercase font-semibold mr-2 text-secondary">{item.keyword}</span>{item.date}
                                                     </h1>
-                                                    <p className='text-secondary mt-2'>{item.description}</p>
+                                                    <p className='text-sixth dark:text-secondary mt-2'>{item.description}</p>
                                                 </div>
                                             </div>
                                         ))

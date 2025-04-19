@@ -17,7 +17,7 @@ const TrendingNewsCard = ({ rating = null, img }) => {
         inactiveFillColor: '#ffffff'
     }
     return (
-        <div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} className='border border-dark text-center text-secondary relative p-3'>
+        <div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} className='border border-dark text-center text-sixth dark:text-secondary relative p-3'>
             <div className=' z-[15] hover:cursor-pointer'>
                 <div className={`absolute z-20 left-2 top-1/2 transform -translate-y-1/2 flex flex-col gap-2 ${isHover ? "block" : "hidden"}`}>
                     <div className='group relative bg-gray-600 transition-colors duration-500 ease-out hover:bg-red-500 p-[6px] rounded font-bold text-xs flex gap-1 animate-[horizontalWave_0.3s_ease-in-out]'>
@@ -37,7 +37,7 @@ const TrendingNewsCard = ({ rating = null, img }) => {
             </div>
             <div className='mt-3'>
                 <h1 className='mb-2 text-sm font-semibold'>Education System</h1>
-                <p className='text-xs text-third flex justify-center gap-1'><FaCalendar/> October 24th,2025</p>
+                <p className='text-xs text-fourth dark:text-third flex justify-center gap-1'><FaCalendar/> October 24th,2025</p>
             </div>
         </div>
     );

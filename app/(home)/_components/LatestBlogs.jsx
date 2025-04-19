@@ -47,7 +47,7 @@ const LatestBlogs = () => {
                                     <Image src={item.img} className='w-full object-cover h-64 pt-10' height={100} width={1000} alt='best deal today' />
                                     <div className=''>
                                         <h2 className='text-[16px] font-bold my-2'>{item.title}</h2>
-                                        <p className='text-xs text-secondary flex items-center gap-1'><FaCalendar/> October 24th,2023</p>
+                                        <p className='text-xs dark:text-secondary flex items-center gap-1'><FaCalendar/> October 24th,2023</p>
                                     </div>
                                 </div>
                             </SwiperSlide>

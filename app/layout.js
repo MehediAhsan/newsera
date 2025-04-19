@@ -3,6 +3,7 @@ import "./globals.css";
 import "../styles/style.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import ReduxProvider from "@/providers/ReduxProvider";
+import { ThemeProvider } from "@/contexts/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,11 +14,32 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="bg-black text-white">
+    <html lang="en">
+     <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme');
+                  const systemPref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  const appliedTheme = theme || systemPref;
+                  document.documentElement.classList.add(appliedTheme);
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+        <meta name="theme-color" content="#000000" />
+      </head>
       <body className={inter.className}>
-        <ReduxProvider>
-          <ReactQueryProvider>{children}</ReactQueryProvider>
-        </ReduxProvider>
+        <div className="bg-white text-black dark:bg-black dark:text-white min-h-screen">
+          <ThemeProvider>
+            <ReduxProvider>
+              <ReactQueryProvider>{children}</ReactQueryProvider>
+            </ReduxProvider>
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );

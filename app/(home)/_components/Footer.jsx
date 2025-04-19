@@ -36,8 +36,8 @@ const Footer = () => {
     }
 
     return (
-        <div className='pt-10 px-10 bg-black'>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 text-sm text-third pb-10'>
+        <div className='pt-10 px-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 text-sm dark:text-third pb-10'>
                 <div className='space-y-2'>
                     <div><Link href="/" className='text-xl font-semibold text-primary'>
                         📙 NewsEra
@@ -102,7 +102,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='bg-fourth w-full h-0.5' />
-            <p className='text-third text-center text-sm italic py-3'>© NewEra. All Rights Reserved. Design by <a href="https://mehediahsan.vercel.app/" className='text-light'>Mehedi Ahsan</a></p>
+            <p className='text-fifth dark:text-third text-center text-sm italic py-3'>© NewEra. All Rights Reserved. Design by <a href="https://mehediahsan.vercel.app/" className='text-dark dark:text-light'>Mehedi Ahsan</a></p>
         </div>
     );
 };

@@ -3,7 +3,7 @@ import { FaFacebookF, FaGoogle, FaPinterest, FaRegPaperPlane, FaTwitter } from "
 
 const Subscribe = () => {
     return (
-        <div className='bg-[#111010] text-secondary grid grid-cols-1 md:grid-cols-3 gap-10 items-center py-12 px-10'>
+        <div className='bg-secondary dark:bg-[#111010] dark:text-secondary grid grid-cols-1 md:grid-cols-3 gap-10 items-center py-12 px-10'>
             <div className='flex gap-4 justify-center'>
                 <FaRegPaperPlane className='text-4xl' />
                 <div>
