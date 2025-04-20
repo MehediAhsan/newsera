@@ -3,8 +3,8 @@ const Button = ({ children, onClick, variant = "primary", size = "md", className
     
     const sizeStyles = {
       sm: "px-3 py-1 text-sm",
-      md: "px-3 py-1 text-base",
-      lg: "px-6 py-4 text-lg"
+      md: "px-3 py-2 text-base",
+      lg: "px-5 py-3 text-lg"
     };
     
     const variantStyles = {

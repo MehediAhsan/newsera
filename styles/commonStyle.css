@@ -1,19 +1,17 @@
-/* social button */
 
 .card {
     width: fit-content;
     height: fit-content;
-    background-color: #762b06;
+    background-color: #D24F0A;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px 8px;
-    gap: 16px;
-    border-radius: 5px;
+    padding: 5px 10px;
+    gap: 14px;
+    border-radius: 3px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
   }
   
-  /* for all social containers*/
   .socialContainer {
     width: 28px;
     height: 28px;
