@@ -7,19 +7,22 @@ import { BiAddToQueue } from "react-icons/bi";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import { FaAlignLeft } from "react-icons/fa";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "@/redux/slices/authSlice";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const DashboardSiveNav = () => {
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
     const router = useRouter();
 
+    const { user } = useSelector((state) => state.auth);
+
     const navigation = [
         {
             href: '/dashboard',
-            name: 'Overview',
+            name: 'Dashboard',
             icon: <MdOutlineDashboardCustomize />
         },
         {
@@ -74,8 +77,8 @@ const DashboardSiveNav = () => {
                             {
                                 navigation.map((item, idx) => (
                                     <li key={idx}>
-                                        <Link href={item.href} className="flex items-center gap-x-2 text-gray-300 p-2 rounded-lg  hover:bg-gray-700 duration-150">
-                                            <div className="text-gray-300">{item.icon}</div>
+                                        <Link href={item.href} className="flex items-center gap-x-2 text-secondary p-2 rounded-lg  hover:bg-sixth duration-150">
+                                            <div className="text-secondary">{item.icon}</div>
                                             {item.name}
                                         </Link>
                                     </li>
@@ -89,24 +92,24 @@ const DashboardSiveNav = () => {
                                         <li key={idx}>
                                             <button
                                                 onClick={item.name === "Logout" ? handleLogout : undefined}
-                                                className="flex items-center gap-x-2 text-gray-300 p-2 rounded-lg hover:bg-gray-700 duration-150 w-full text-left"
+                                                className="flex items-center gap-x-2 text-secondary p-2 rounded-lg hover:bg-sixth duration-150 w-full text-left"
                                             >
-                                                <div className="text-gray-300">{item.icon}</div>
+                                                <div className="text-secondary">{item.icon}</div>
                                                 {item.name}
                                             </button>
                                         </li>
                                     ))
                                 }
                             </ul>
-                            <div className="py-4 px-4 border-t">
+                            <div className="py-3 px-4 border-t border-fourth">
                                 <div className="flex items-center gap-x-4">
-                                    <img src="https://avatars.githubusercontent.com/u/83613654?v=4" className="w-12 h-12 rounded-full" />
+                                    <Image src="/assets/user.jpg" alt="Image" className="w-12 h-12 rounded-full object-cover" width={1000} height={500} />
                                     <div>
-                                        <span className="block text-gray-300 text-sm font-semibold">Mehedi Ahsan</span>
+                                        <span className="block text-secondary text-sm font-semibold">{user?.name}</span>
                                         <span
                                             className="block mt-px text-gray-400 text-xs"
                                         >
-                                            mehediahsan@gmail.com
+                                            {user?.email}
                                         </span>
                                     </div>
                                 </div>
