@@ -12,7 +12,6 @@ import TrendingNews from './_components/TrendingNews';
 import Subscribe from './_components/Subscribe';
 import InternationalNews from './_components/InternationalNews';
 import Banner from './_components/Banner';
-import Footer from './_components/Footer';
 export default function Home() {
   return <main className='container mx-auto'>
     <div className="mx-6">
@@ -73,6 +72,5 @@ export default function Home() {
       <TopStories />
     </div>
     <Subscribe />
-    <Footer />
   </main>;
 }
