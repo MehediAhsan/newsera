@@ -4,6 +4,7 @@ import "../styles/style.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import ReduxProvider from "@/providers/ReduxProvider";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
+import Chat from "@/components/Chat";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-     <head>
+      <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -33,11 +34,13 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#000000" />
       </head>
       <body className={inter.className}>
-          <ThemeProvider>
-            <ReduxProvider>
-              <ReactQueryProvider>{children}</ReactQueryProvider>
-            </ReduxProvider>
-          </ThemeProvider>
+        <ThemeProvider>
+          <ReduxProvider>
+            <ReactQueryProvider>
+              {children} <Chat />
+            </ReactQueryProvider>
+          </ReduxProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
