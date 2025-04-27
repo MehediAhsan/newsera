@@ -74,7 +74,7 @@ const AllNews = () => {
                 <td className="p-2 border-r border-gray-700">{index + 1}</td>
                 <td className="p-2 border-r border-gray-700">
                   {item?.image ? (
-                    <Image className="h-12 w-20 object-cover rounded mx-auto" src={item?.image} alt="news" width={100} height={100} />
+                    <Image className="h-10 w-full object-contain rounded mx-auto" src={item?.image} alt="news" width={100} height={100} />
                   ) : "N/A"}
                 </td>
                 <td className="p-2 border-r border-gray-700">{item?.headline}</td>

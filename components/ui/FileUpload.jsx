@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Upload, Trash2, FileText } from "lucide-react";
 import Image from "next/image";
+import { compressImage } from "@/utils/constant";
 
 const FileUpload = ({ label, data, setData }) => {
     const [fileName, setFileName] = useState(null);
@@ -8,18 +9,28 @@ const FileUpload = ({ label, data, setData }) => {
     const fileInputRef = useRef(null);
     const [dragActive, setDragActive] = useState(false);
 
-    const handleFile = (file) => {
+    const handleFile = async (file) => {
         if (file) {
             setFileName(file.name);
             setFileType(file.type);
-
-            const reader = new FileReader();
-
-            if (file.type.startsWith("image/")) {
-                reader.onloadend = () => setData(reader.result);
-                reader.readAsDataURL(file);
-            } else {
-                reader.onloadend = () => setData(null); // No preview for non-images
+    
+            try {
+                const compressedBlob = await compressImage(file, { quality: 0.2, maxWidth: 300 });
+    
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    const base64Image = reader.result;
+                    setData(base64Image);
+                };
+                reader.onerror = (error) => {
+                    console.error("FileReader error:", error);
+                    setData(null); 
+                };
+                
+                reader.readAsDataURL(compressedBlob);
+            } catch (error) {
+                console.error("Compression error:", error);
+                setData(null); 
             }
         }
     };
