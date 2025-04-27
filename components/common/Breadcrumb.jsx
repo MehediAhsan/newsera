@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 
 const Breadcrumb = ({ label }) => {
     return (
-        <div className="flex justify-between items-center mb-10 ">
+        <div className="flex justify-between items-center mb-10">
             <span className="text-xl font-semibold text-gray-200">{label}</span>
             <nav className="text-sm">
                 <ul className="flex items-center gap-2">

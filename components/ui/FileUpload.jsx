@@ -66,7 +66,7 @@ const FileUpload = ({ label, data, setData }) => {
         <div className="flex flex-col gap-3">
             {label && (
                 <label className="text-sm font-medium text-gray-300">
-                    {label} <span className="text-red-500">*</span>
+                    {label}
                 </label>
             )}
 

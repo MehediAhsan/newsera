@@ -8,16 +8,19 @@ import Select from "@/components/ui/Select";
 import Textarea from "@/components/ui/Textarea";
 import FileUpload from "@/components/ui/FileUpload";
 import { showAlert } from "@/utils/sweetAlert";
+import { useSelector } from "react-redux";
 
 const AddNews = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const { mutate: addNews, isMutating } = useApi("/api/news", "POST", { queryKey: ["news"] });
 
+  const { user } = useSelector((state) => state.auth);
+
   const [image, setImage] = useState(null);
 
   const onSubmit = (data) => {
     addNews(
-      { ...data, image },
+      { ...data, image, authorName: user?.name, authorEmail: user?.email },
       {
         onSuccess: () => {
           reset();
@@ -32,7 +35,7 @@ const AddNews = () => {
     <>
       <Breadcrumb label="Add News" />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 w-1/2 mx-auto p-6 rounded-lg shadow-lg">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 w-1/2 mx-auto rounded-lg shadow-lg">
         <Input label="News Headline" register={register} required errors={errors} name="headline" placeholder="Enter News Headline..." />
 
         <Select

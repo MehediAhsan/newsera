@@ -352,15 +352,15 @@ const Overview = () => {
 
     return (
         <div className="container mx-auto">
-            <h1 className="text-2xl font-semibold text-secondary mb-6">Dashboard</h1>
+            <h1 className="text-xl font-semibold text-secondary mb-6">Dashboard</h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                 {sparkData.map((item) => (
-                    <div key={item.id} className={`p-4 rounded-lg shadow text-white bg-gradient-to-r ${item.gradient}`}>
+                    <div key={item.id} className={`p-3 rounded-lg shadow text-white bg-gradient-to-r ${item.gradient}`}>
                         <div className="flex justify-between items-start">
                             <div>
-                                <h3 className="text-2xl font-bold">{item.value}</h3>
-                                <h4 className="text-sm opacity-80">{item.label}</h4>
+                                <h3 className="font-bold">{item.value}</h3>
+                                <h4 className="text-xs opacity-80">{item.label}</h4>
                             </div>
                         </div>
                         <div className="mt-4">
@@ -375,7 +375,7 @@ const Overview = () => {
                                 }}
                                 series={[{ data: item.data }]}
                                 type="line"
-                                height={60}
+                                height={20}
                                 width="100%"
                             />
                         </div>
@@ -383,49 +383,49 @@ const Overview = () => {
                 ))}
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                <div className="bg-gray-950 p-4 rounded-lg border border-dark">
-                    <h2 className="text-lg font-semibold text-secondary mb-4">Monthly Page Views</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <div className="bg-gray-950 px-4 pt-4 rounded-lg border border-dark">
+                    <h2 className="text-secondary">Monthly Page Views</h2>
                     <Chart
                         options={lineOptions}
                         series={lineSeries}
                         type="line"
-                        height={300}
+                        height={250}
                         width="100%"
                     />
                 </div>
 
-                <div className="bg-gray-950 p-4 rounded-lg border border-dark">
-                    <h2 className="text-lg font-semibold text-secondary mb-4">User Engagement Metrics</h2>
+                <div className="bg-gray-950 px-4 pt-4 rounded-lg border border-dark">
+                    <h2 className="text-secondary">User Engagement Metrics</h2>
                     <Chart
                         options={radialOptions}
                         series={radialSeries}
                         type="radialBar"
-                        height={300}
+                        height={250}
                         width="100%"
                     />
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="bg-gray-950 p-4 rounded-lg border border-dark">
-                    <h2 className="text-lg font-semibold text-secondary mb-4">Top Categories by Views</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="bg-gray-950 px-4 pt-4 rounded-lg border border-dark">
+                    <h2 className="text-secondary">Top Categories by Views</h2>
                     <Chart
                         options={barOptions}
                         series={barSeries}
                         type="bar"
-                        height={300}
+                        height={250}
                         width="100%"
                     />
                 </div>
 
-                <div className="bg-gray-950 p-4 rounded-lg border border-dark">
-                    <h2 className="text-lg font-semibold text-secondary mb-4">Weekly Active Users</h2>
+                <div className="bg-gray-950 px-4 pt-4 rounded-lg border border-dark">
+                    <h2 className="text-secondary">Weekly Active Users</h2>
                     <Chart
                         options={areaOptions}
                         series={areaSeries}
                         type="area"
-                        height={300}
+                        height={250}
                         width="100%"
                     />
                 </div>
