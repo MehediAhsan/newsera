@@ -2,7 +2,7 @@ import Button from '@/components/ui/Button';
 
 export default function ContactPage() {
     return (
-        <div className="min-h-screen mt-44 px-10 mb-10">
+        <div className="min-h-screen mt-10 px-10 mb-10">
 
             <main className="container mx-auto">
 

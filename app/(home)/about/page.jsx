@@ -26,7 +26,7 @@ const teamMembers = [
 
 const AboutPage = () => {
     return (
-        <div className="mt-40">
+        <div className="mt-10">
             <section className="space-y-12 px-10">
                 <div>
                     <div className="flex items-center gap-4 mb-4">

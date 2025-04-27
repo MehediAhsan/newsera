@@ -7,8 +7,8 @@ import ThemeSwitcher from "./common/ThemeSwitcher";
 const Header = () => {
   const date = new Date();
   return (
-    <div className="container mx-auto px-4 pt-4 flex justify-between">
-      <span className="flex items-center gap-3">
+    <div className="px-4 py-2 flex justify-between">
+      <span className="flex items-center gap-3 text-xs">
         {date.toUTCString().slice(0, 16)} <ThemeSwitcher />
       </span>
       <div className="flex gap-4">

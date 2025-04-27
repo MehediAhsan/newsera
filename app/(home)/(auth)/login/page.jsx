@@ -26,7 +26,7 @@ const LoginPage = () => {
     };
 
     return (
-        <div className='flex justify-center items-center mt-44 mb-10'>
+        <div className='flex justify-center items-center my-10'>
             <div
                 className="md:w-4/12  rounded shadow flex flex-col justify-between p-3"
             >
