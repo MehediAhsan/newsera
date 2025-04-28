@@ -23,12 +23,12 @@ const Select = ({
             )}
             <select
                 {...register(name, validationRules)}
-                className={`w-full px-4 py-2 text-third bg-gray-950 border border-gray-700 rounded focus:outline-none transition ${errors?.[name] && "border-red-500"}`}
+                className={`w-full px-4 py-2 text-third bg-transparent border border-gray-700 rounded focus:outline-none transition ${errors?.[name] && "border-red-500"}`}
                 {...rest}
             >
-                <option value="">Choose an option</option>
+                <option value="" className="bg-gray-800">Choose an option</option>
                 {options.map((option) => (
-                    <option key={option} value={option}>
+                    <option key={option} value={option} className="bg-black">
                         {option}
                     </option>
                 ))}

@@ -72,7 +72,7 @@ const FileUpload = ({ label, data, setData }) => {
 
             {!data ? (
                 <div
-                    className={`flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-6 cursor-pointer transition bg-gray-950 
+                    className={`flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-6 cursor-pointer transition bg-transparent 
                     ${dragActive ? "border-blue-500 bg-gray-800" : "border-gray-700"}`}
                     onClick={() => fileInputRef.current.click()}
                     onDragOver={handleDragOver}
@@ -90,7 +90,7 @@ const FileUpload = ({ label, data, setData }) => {
                     />
                 </div>
             ) : (
-                <div className="relative flex items-center gap-4 bg-gray-950 p-3 rounded-lg border border-gray-700 shadow-lg">
+                <div className="relative flex items-center gap-4 bg-transparent p-3 rounded-lg border border-gray-700 shadow-lg">
                     {data?.startsWith("data:image/") || fileType?.startsWith("image/") ? (
                         <>
                             <Image
