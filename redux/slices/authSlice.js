@@ -1,3 +1,4 @@
+import { showAlert } from "@/utils/sweetAlert";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Async thunk for login
@@ -12,7 +13,14 @@ export const loginUser = createAsyncThunk(
       });
       const data = await response.json();
       if (!response.ok) {
+        showAlert({
+          title: "Error!",
+          text: data.message || "Login failed",
+          icon: "error",
+        });
         throw new Error(data.message || "Login failed");
+      } else {
+        showAlert({ title: "Success!", text: "Login successful" });
       }
       return data.user;
     } catch (error) {

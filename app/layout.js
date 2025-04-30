@@ -1,12 +1,10 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import "../styles/style.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import ReduxProvider from "@/providers/ReduxProvider";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
 import Chat from "@/components/Chat";
-
-const inter = Inter({ subsets: ["latin"] });
+import { poppins } from "@/lib/fonts";
 
 export const metadata = {
   title: "NewsEra",
@@ -33,7 +31,7 @@ export default function RootLayout({ children }) {
         />
         <meta name="theme-color" content="#000000" />
       </head>
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <ThemeProvider>
           <ReduxProvider>
             <ReactQueryProvider>

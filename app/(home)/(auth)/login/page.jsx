@@ -6,20 +6,17 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaFacebook, FaGoogle, FaTwitter } from 'react-icons/fa';
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const LoginPage = () => {
     const { register, handleSubmit } = useForm();
     const [show, setShow] = useState(false);
 
     const dispatch = useDispatch();
-    const { loading, error } = useSelector((state) => state.auth);
     const router = useRouter();
 
     const onSubmit = async (formData) => {
         const resultAction = await dispatch(loginUser(formData));
-        console.log(resultAction);
-        console.log(loginUser.fulfilled.match(resultAction));
         if (loginUser.fulfilled.match(resultAction)) {
             router.push('/dashboard');
         }
@@ -42,7 +39,7 @@ const LoginPage = () => {
                             {...register("email")}
                             required
                             type="email"
-                            className="w-full p-2 mb-4 mt-1 outline-none ring-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full p-2 mb-4 mt-1 outline-none ring-none focus:ring-2 focus:ring-orange-500 bg-secondary dark:bg-white"
                         />
 
                         <label
@@ -54,7 +51,7 @@ const LoginPage = () => {
                                 {...register("password")}
                                 required
                                 type={`${show ? 'text' : 'password'}`}
-                                className="w-full p-2 mb-4 mt-1 outline-none ring-none focus:ring-2 focus:ring-orange-500"
+                                className="w-full p-2 mb-4 mt-1 outline-none ring-none focus:ring-2 focus:ring-orange-500 bg-secondary dark:bg-white"
                             />
                             {
                                 show ? <IoIosEye className='absolute top-3 right-3 text-2xl text-gray-600 cursor-pointer' onClick={() => setShow(!show)} /> : <IoIosEyeOff className='absolute top-3 right-3 text-2xl text-gray-600 cursor-pointer' onClick={() => setShow(!show)} />
@@ -78,7 +75,7 @@ const LoginPage = () => {
                             <FaFacebook className='text-blue-500 cursor-pointer' />
                             <FaTwitter className='text-sky-500 cursor-pointer' />
                         </div>
-                        <div className='text-sm text-gray-300 text-center'>Don&apos;t have an account please <Link href="/registration" className='text-blue-500 underline'>Sign Up</Link></div>
+                        <div className='text-sm dark:text-gray-300 text-center'>Don&apos;t have an account please <Link href="/registration" className='text-blue-500 underline'>Sign Up</Link></div>
                     </fieldset>
                 </form>
             </div>
