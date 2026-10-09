@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { Bookmark, BookOpenText, Trash2 } from 'lucide-react';
@@ -71,7 +72,14 @@ export default function ReadingListPage() {
               href={`/article/${article.slug}`}
               className="group overflow-hidden rounded-[28px] border border-white/10 bg-slate-950 text-white transition hover:border-orange-400/30 hover:bg-slate-900"
             >
-              <img src={article.image} alt={article.title} className="h-52 w-full object-cover" />
+              <Image
+                src={article.image}
+                alt={article.title}
+                width={900}
+                height={420}
+                unoptimized
+                className="h-52 w-full object-cover"
+              />
               <div className="p-4">
                 <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-orange-200">{article.category}</div>
                 <h3 className="line-clamp-3 text-xl font-black text-white group-hover:text-orange-100">{article.title}</h3>

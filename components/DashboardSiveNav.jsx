@@ -18,11 +18,25 @@ const DashboardSiveNav = () => {
   const router = useRouter();
   const { user } = useSelector((state) => state.auth);
 
-  const navigation = [
-    { href: '/dashboard', name: 'Dashboard', icon: <MdOutlineDashboardCustomize /> },
-    { href: '/dashboard/allNews', name: 'All News', icon: <PiNewspaper /> },
-    { href: '/dashboard/addNews', name: 'Add News', icon: <BiAddToQueue /> },
-  ];
+  const role = user?.role || 'reader';
+  const navigationMap = {
+    admin: [
+      { href: '/dashboard', name: 'Dashboard', icon: <MdOutlineDashboardCustomize /> },
+      { href: '/dashboard/allNews', name: 'All News', icon: <PiNewspaper /> },
+      { href: '/dashboard/addNews', name: 'Add News', icon: <BiAddToQueue /> },
+    ],
+    editor: [
+      { href: '/dashboard', name: 'Dashboard', icon: <MdOutlineDashboardCustomize /> },
+      { href: '/dashboard/allNews', name: 'All News', icon: <PiNewspaper /> },
+      { href: '/dashboard/addNews', name: 'Add News', icon: <BiAddToQueue /> },
+    ],
+    reader: [
+      { href: '/dashboard', name: 'Overview', icon: <MdOutlineDashboardCustomize /> },
+      { href: '/reading-list', name: 'Saved stories', icon: <PiNewspaper /> },
+    ],
+  };
+
+  const navigation = navigationMap[role] || navigationMap.reader;
 
   const navsFooter = [
     { name: 'Settings', icon: <IoSettingsOutline /> },
@@ -59,8 +73,8 @@ const DashboardSiveNav = () => {
           </div>
 
           <div className="mb-6 rounded-2xl border border-orange-500/20 bg-orange-500/10 p-3">
-            <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-orange-200">Editorial dashboard</div>
-            <div className="mt-2 text-sm text-slate-200">Publisher workspace</div>
+            <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-orange-200">{role === 'admin' ? 'Platform control' : role === 'editor' ? 'Editorial dashboard' : 'Reader workspace'}</div>
+            <div className="mt-2 text-sm capitalize text-slate-200">{role} access</div>
           </div>
 
           <nav className="flex-1">
@@ -105,6 +119,9 @@ const DashboardSiveNav = () => {
               <div className="min-w-0">
                 <div className="truncate text-sm font-semibold text-white">{user?.name || 'News Editor'}</div>
                 <div className="truncate text-xs text-slate-400">{user?.email || 'editor@newsera.com'}</div>
+                <div className="mt-1 inline-flex rounded-full border border-orange-500/30 bg-orange-500/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-orange-200">
+                  {user?.role || 'reader'}
+                </div>
               </div>
             </div>
           </div>

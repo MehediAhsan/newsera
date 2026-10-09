@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { articleMap } from '@/lib/newsCatalog';
@@ -128,9 +129,12 @@ export default function ArticlePage({ params }) {
 
         <article className="overflow-hidden rounded-[32px] border border-white/10 bg-slate-900/60">
           <div className="relative">
-            <img
+            <Image
               src={article.image}
               alt={article.title}
+              width={1600}
+              height={900}
+              unoptimized
               className="h-[340px] w-full object-cover sm:h-[440px] lg:h-[520px]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
@@ -240,9 +244,12 @@ export default function ArticlePage({ params }) {
                       className="group block rounded-2xl border border-white/10 bg-white/5 p-2.5 transition hover:border-orange-400/30 hover:bg-orange-500/5"
                     >
                       <div className="flex gap-3">
-                        <img
+                        <Image
                           src={story.image}
                           alt={story.title}
+                          width={320}
+                          height={220}
+                          unoptimized
                           className="h-20 w-24 rounded-xl object-cover"
                         />
                         <div className="min-w-0 flex-1">

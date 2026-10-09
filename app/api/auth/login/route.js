@@ -22,7 +22,12 @@ export async function POST(request) {
     }
 
     const token = jwt.sign(
-      { userId: user._id, name: user.name, email: user.email },
+      {
+        userId: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role || 'reader',
+      },
       JWT_SECRET,
       {
         expiresIn: "1d",
@@ -40,7 +45,12 @@ export async function POST(request) {
     return Response.json(
       {
         message: "Login successful",
-        user: { userId: user._id, name: user.name, email: user.email },
+        user: {
+          userId: user._id,
+          name: user.name,
+          email: user.email,
+          role: user.role || 'reader',
+        },
       },
       { status: 200 }
     );

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { articleCatalog } from '@/lib/newsCatalog';
 import { ArrowRight, Clock3, Flame, Sparkles } from 'lucide-react';
@@ -13,7 +14,14 @@ export default function NewsPage() {
       <section className="overflow-hidden rounded-[32px] border border-white/10 bg-slate-950 text-white shadow-2xl shadow-slate-950/30">
         <div className="grid gap-0 lg:grid-cols-[1.3fr_0.7fr]">
           <div className="relative min-h-[420px]">
-            <img src={featured.image} alt={featured.title} className="h-full w-full object-cover" />
+            <Image
+              src={featured.image}
+              alt={featured.title}
+              width={1500}
+              height={900}
+              unoptimized
+              className="h-full w-full object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
               <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-200">
@@ -84,7 +92,14 @@ export default function NewsPage() {
               href={`/article/${story.slug}`}
               className="group overflow-hidden rounded-[28px] border border-white/10 bg-slate-950 text-white transition hover:border-orange-400/30 hover:bg-slate-900"
             >
-              <img src={story.image} alt={story.title} className="h-52 w-full object-cover" />
+              <Image
+                src={story.image}
+                alt={story.title}
+                width={900}
+                height={420}
+                unoptimized
+                className="h-52 w-full object-cover"
+              />
               <div className="p-4">
                 <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-200">{story.category}</div>
                 <h3 className="line-clamp-3 text-xl font-black text-white group-hover:text-orange-100">{story.title}</h3>

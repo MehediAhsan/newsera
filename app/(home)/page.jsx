@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { ArrowRight, Clock3, Flame, Sparkles, TrendingUp, Play, Bookmark, Radio } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Clock3, Flame, Sparkles, TrendingUp, Radio } from 'lucide-react';
 import { articleCatalog, featuredArticles } from '@/lib/newsCatalog';
 import LivePoll from '@/components/LivePoll';
 import NewsroomInsightPanel from '@/components/NewsroomInsightPanel';
@@ -46,7 +47,14 @@ export default function Home() {
         <div className="grid gap-5 lg:grid-cols-[1.4fr_0.6fr]">
           <Link href={`/article/${lead.slug}`} className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-slate-900">
             <div className="relative h-[420px] sm:h-[500px]">
-              <img src={lead.image} alt={lead.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <Image
+                src={lead.image}
+                alt={lead.title}
+                width={1600}
+                height={900}
+                unoptimized
+                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
             </div>
 
@@ -79,7 +87,14 @@ export default function Home() {
                 className="group block overflow-hidden rounded-[24px] border border-white/10 bg-slate-900/80 transition hover:border-orange-400/30 hover:bg-slate-900"
               >
                 <div className="relative h-40 overflow-hidden">
-                  <img src={item.image} alt={item.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={900}
+                    height={420}
+                    unoptimized
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
                 </div>
                 <div className="p-4">
                   <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-200">{item.category}</div>
@@ -143,7 +158,14 @@ export default function Home() {
                 href={`/article/${story.slug}`}
                 className="group flex gap-3 rounded-2xl border border-white/10 bg-slate-900/70 p-3 transition hover:border-orange-400/30 hover:bg-slate-900"
               >
-                <img src={story.image} alt={story.title} className="h-20 w-24 rounded-xl object-cover" />
+                <Image
+                  src={story.image}
+                  alt={story.title}
+                  width={240}
+                  height={120}
+                  unoptimized
+                  className="h-20 w-24 rounded-xl object-cover"
+                />
                 <div className="min-w-0 flex-1">
                   <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-200">{story.category}</div>
                   <div className="mt-1 line-clamp-2 text-sm font-bold text-white group-hover:text-orange-100">{story.title}</div>
@@ -176,7 +198,14 @@ export default function Home() {
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {articleCatalog.slice(0, 6).map((story) => (
             <article key={story.slug} className="overflow-hidden rounded-[24px] border border-white/10 bg-slate-900/80">
-              <img src={story.image} alt={story.title} className="h-48 w-full object-cover" />
+              <Image
+                src={story.image}
+                alt={story.title}
+                width={900}
+                height={420}
+                unoptimized
+                className="h-48 w-full object-cover"
+              />
               <div className="p-4">
                 <div className="mb-2 flex items-center justify-between gap-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-orange-200">
                   <span>{story.category}</span>

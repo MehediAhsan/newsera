@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   ArrowUpRight,
   BarChart3,
@@ -84,12 +87,40 @@ const statusStyles = {
 };
 
 const DashboardPage = () => {
+  const { user } = useSelector((state) => state.auth);
+  const role = user?.role || 'reader';
+  const roleTitle = {
+    admin: 'Platform control center',
+    editor: 'Editorial command center',
+    reader: 'Reader engagement overview',
+  }[role] || 'Newsroom performance overview';
+
+  const roleSummary = {
+    admin: {
+      badge: 'Platform admin',
+      action: 'Review system health',
+    },
+    editor: {
+      badge: 'Editorial access',
+      action: 'Publish story',
+    },
+    reader: {
+      badge: 'Reader access',
+      action: 'View saved items',
+    },
+  }[role] || { badge: 'Editorial access', action: 'Publish story' };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-4 rounded-[28px] border border-white/10 bg-slate-950/70 p-5 sm:p-6 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <div className="text-[10px] font-semibold uppercase tracking-[0.26em] text-orange-300">Editorial command center</div>
-          <h1 className="mt-2 text-3xl font-black text-white">Newsroom performance overview</h1>
+          <div className="flex items-center gap-3">
+            <div className="text-[10px] font-semibold uppercase tracking-[0.26em] text-orange-300">{roleSummary.badge}</div>
+            <div className="rounded-full border border-orange-500/30 bg-orange-500/10 px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-orange-200">
+              {role}
+            </div>
+          </div>
+          <h1 className="mt-2 text-3xl font-black text-white">{roleTitle}</h1>
         </div>
 
         <div className="flex items-center gap-3">
@@ -101,7 +132,7 @@ const DashboardPage = () => {
             type="button"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/20"
           >
-            Publish story
+            {roleSummary.action}
             <ArrowUpRight className="h-4 w-4" />
           </button>
         </div>

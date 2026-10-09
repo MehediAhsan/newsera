@@ -1,21 +1,61 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaFacebookF, FaGoogle, FaTwitter } from 'react-icons/fa';
 import { IoIosEye, IoIosEyeOff } from 'react-icons/io';
 import { showAlert } from '@/utils/sweetAlert';
 
+const roleOptions = [
+  { value: 'reader', label: 'Reader', helper: 'Save stories, follow topics, and read the briefing' },
+  { value: 'editor', label: 'Editor', helper: 'Manage publishing workflow and newsroom content' },
+  { value: 'admin', label: 'Admin', helper: 'Oversee analytics, teams, and platform settings' },
+];
+
 const RegistrationPage = () => {
   const { register, handleSubmit, reset } = useForm();
   const [showPassword, setShowPassword] = useState(false);
+  const [selectedRole, setSelectedRole] = useState('reader');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [password, setPassword] = useState('');
+
+  const passwordStrength = useMemo(() => {
+    if (!password) {
+      return { label: 'No password yet', width: '0%', color: 'bg-slate-500', text: 'text-slate-300' };
+    }
+
+    const checks = [
+      password.length >= 8,
+      /[A-Z]/.test(password),
+      /[a-z]/.test(password),
+      /\d/.test(password),
+      /[^A-Za-z0-9]/.test(password),
+    ].filter(Boolean).length;
+
+    if (checks <= 2) {
+      return { label: 'Weak', width: '35%', color: 'bg-red-500', text: 'text-red-300' };
+    }
+    if (checks === 3 || checks === 4) {
+      return { label: 'Good', width: '70%', color: 'bg-amber-400', text: 'text-amber-300' };
+    }
+    return { label: 'Strong', width: '100%', color: 'bg-emerald-500', text: 'text-emerald-300' };
+  }, [password]);
 
   const onSubmit = async (formData) => {
+    if (formData.password !== confirmPassword) {
+      showAlert({
+        title: 'Password mismatch',
+        text: 'Please confirm your password carefully before continuing.',
+        icon: 'error',
+      });
+      return;
+    }
+
     const response = await fetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ ...formData, role: selectedRole }),
     });
 
     const data = await response.json();
@@ -31,6 +71,9 @@ const RegistrationPage = () => {
 
     showAlert({ title: 'Success!', text: 'Registration successful' });
     reset();
+    setPassword('');
+    setConfirmPassword('');
+    setSelectedRole('reader');
   };
 
   return (
@@ -106,10 +149,34 @@ const RegistrationPage = () => {
               </div>
 
               <div>
+                <label className="mb-2 block text-sm font-medium text-slate-200">Choose your role</label>
+                <div className="grid gap-2 sm:grid-cols-3">
+                  {roleOptions.map((role) => (
+                    <button
+                      key={role.value}
+                      type="button"
+                      onClick={() => setSelectedRole(role.value)}
+                      className={`rounded-2xl border p-3 text-left transition ${
+                        selectedRole === role.value
+                          ? 'border-orange-400/50 bg-orange-500/10 text-white'
+                          : 'border-white/10 bg-slate-900/70 text-slate-300 hover:border-orange-400/30'
+                      }`}
+                    >
+                      <div className="text-sm font-semibold">{role.label}</div>
+                      <div className="mt-1 text-[10px] leading-4 text-slate-400">{role.helper}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
                 <label className="mb-2 block text-sm font-medium text-slate-200">Password</label>
                 <div className="relative">
                   <input
-                    {...register('password', { required: true })}
+                    {...register('password', {
+                      required: true,
+                      onChange: (event) => setPassword(event.target.value),
+                    })}
                     type={showPassword ? 'text' : 'password'}
                     required
                     className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 pr-11 text-sm text-white outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20"
@@ -124,6 +191,26 @@ const RegistrationPage = () => {
                     {showPassword ? <IoIosEye className="text-2xl" /> : <IoIosEyeOff className="text-2xl" />}
                   </button>
                 </div>
+                <div className="mt-3">
+                  <div className="mb-2 flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                    <span>Strength</span>
+                    <span className={passwordStrength.text}>{passwordStrength.label}</span>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-slate-800">
+                    <div className={`${passwordStrength.color} h-full rounded-full transition-all duration-300`} style={{ width: passwordStrength.width }} />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-medium text-slate-200">Confirm password</label>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={confirmPassword}
+                  onChange={(event) => setConfirmPassword(event.target.value)}
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-sm text-white outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20"
+                  placeholder="Re-enter your password"
+                />
               </div>
 
               <button
@@ -138,6 +225,11 @@ const RegistrationPage = () => {
               <div className="h-px flex-1 bg-white/10" />
               <span className="text-xs uppercase tracking-[0.2em] text-slate-400">or sign up with</span>
               <div className="h-px flex-1 bg-white/10" />
+            </div>
+
+            <div className="mb-5 flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.18em] text-slate-400">
+              <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-emerald-300">Secure session</span>
+              <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-2.5 py-1 text-sky-300">Email verified</span>
             </div>
 
             <div className="grid grid-cols-3 gap-3">

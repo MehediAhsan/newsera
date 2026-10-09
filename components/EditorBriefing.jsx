@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Bot, BriefcaseBusiness, Newspaper, TrendingUp } from 'lucide-react';
 import { articleCatalog } from '@/lib/newsCatalog';
@@ -65,7 +66,14 @@ export default function EditorBriefing() {
               href={`/article/${story.slug}`}
               className="group overflow-hidden rounded-[24px] border border-white/10 bg-slate-900/80 transition hover:border-orange-400/30 hover:bg-slate-900"
             >
-              <img src={story.image} alt={story.title} className="h-28 w-full object-cover" />
+              <Image
+                src={story.image}
+                alt={story.title}
+                width={900}
+                height={350}
+                unoptimized
+                className="h-28 w-full object-cover"
+              />
               <div className="p-3">
                 <div className="mb-2 inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-200">
                   <TrendingUp className="h-3 w-3" />
