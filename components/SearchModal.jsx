@@ -3,44 +3,15 @@
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowRight, Search, Sparkles, X } from 'lucide-react';
+import { articleCatalog } from '@/lib/newsCatalog';
 
-const catalog = [
-  {
-    title: 'AI tools are reshaping product teams, but trust and governance remain the real challenge',
-    category: 'Technology',
-    excerpt: 'Teams are deploying AI in product research and operations while balancing governance and review loops.',
-    tags: ['AI', 'Product', 'Governance'],
-    slug: 'ai-reshaping-product-teams',
-  },
-  {
-    title: 'Bangladesh startups attract fresh capital as digital-first businesses scale faster',
-    category: 'Business',
-    excerpt: 'Local investors are backing ventures with healthier unit economics and clearer regional growth loops.',
-    tags: ['Startup', 'Bangladesh', 'Funding'],
-    slug: 'bangladesh-startups-scale',
-  },
-  {
-    title: 'Cities are rethinking flood resilience as extreme weather hits everyday life',
-    category: 'Climate',
-    excerpt: 'Urban planning teams are improving resilience infrastructure after repeated climate disruptions.',
-    tags: ['Climate', 'Infrastructure', 'Policy'],
-    slug: 'climate-resilience',
-  },
-  {
-    title: 'Global supply chains are recovering, but regional volatility keeps pricing unstable',
-    category: 'World',
-    excerpt: 'Trade corridors remain volatile while inflation risk and shipping costs create uneven efficiency gains.',
-    tags: ['Global', 'Trade', 'Economy'],
-    slug: 'global-supply-chains',
-  },
-  {
-    title: 'Creative communities are turning local stories into global digital experiences',
-    category: 'Culture',
-    excerpt: 'Independent creators are building stronger storytelling ecosystems around local identity and digital reach.',
-    tags: ['Culture', 'Media', 'Creators'],
-    slug: 'creative-communities',
-  },
-];
+const catalog = articleCatalog.map((article) => ({
+  title: article.title,
+  category: article.category,
+  excerpt: article.deck,
+  tags: article.tags,
+  slug: article.slug,
+}));
 
 const quickTags = ['AI', 'Business', 'Climate', 'Technology', 'Startup', 'Culture'];
 

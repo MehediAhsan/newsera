@@ -19,6 +19,7 @@ const dropdownNavs = [
 const navigation = [
   { title: 'Home', path: '/', isDropdown: false },
   { title: 'News', path: '#', isDropdown: true, navs: dropdownNavs },
+  { title: 'Saved', path: '/reading-list', isDropdown: false },
   { title: 'About', path: '/about', isDropdown: false },
   { title: 'Contact', path: '/contact', isDropdown: false },
   { title: 'Dashboard', path: '/dashboard', isDropdown: false },

@@ -2,89 +2,16 @@
 
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import { articleMap } from '@/lib/newsCatalog';
 import {
   ArrowLeft,
   Bookmark,
-  Clock3,
   Headphones,
   MessageSquareText,
   Share2,
   Sparkles,
   ThumbsUp,
 } from 'lucide-react';
-
-const articleMap = {
-  'ai-reshaping-product-teams': {
-    slug: 'ai-reshaping-product-teams',
-    category: 'Technology',
-    author: 'Nafisa Rahman',
-    readTime: '6 min read',
-    published: 'May 12, 2026',
-    title: 'AI tools are reshaping product teams, but trust and governance remain the real challenge',
-    deck: 'From content operations to customer support, teams are racing to integrate AI while balancing speed, quality, and responsible deployment.',
-    image:
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80',
-    tags: ['AI', 'Product', 'Governance', 'Workflow'],
-    summary: [
-      'AI is moving from pilot projects to everyday operational software across product teams.',
-      'Teams are reducing manual overhead, but governance, quality review, and accountability are becoming the real bottlenecks.',
-      'The most effective teams are building human review loops around AI instead of treating automation as a complete replacement.',
-    ],
-    sections: [
-      {
-        heading: 'Product teams are changing faster than policy',
-        body:
-          'The most visible shift is not in the number of AI tools being tested; it is in how quickly product teams are embedding them into daily workflows. Research, user interviews, content generation, customer support, and release documentation all now have AI-assisted layers. That speed is attractive, but it also creates a mismatch between experimentation and accountability. Teams need sharper review systems before they can safely scale.',
-      },
-      {
-        heading: 'The efficiency gain is real — but uneven',
-        body:
-          'For marketing and product operations, AI is reducing repetitive work in a way that feels measurable. Drafting briefs, summarizing stakeholder threads, and creating rough content are no longer bottlenecks. But the biggest gain is not raw generation speed; it is the decision velocity created when teams move from raw research to iteration faster. The challenge is that not every AI output is safe to publish without scrutiny.',
-      },
-      {
-        heading: 'Trust and governance are the new product moat',
-        body:
-          'The strongest teams are creating clear frameworks: human review gates, explicit data handling policies, and documented prompts for high-impact decisions. They are building AI literacy into their workflows instead of assuming a one-click automation fix. In other words, the next competitive advantage is not just AI adoption — it is responsible adoption that preserves trust.',
-      },
-    ],
-    reactionCount: 1840,
-  },
-  'bangladesh-startups-scale': {
-    slug: 'bangladesh-startups-scale',
-    category: 'Business',
-    author: 'Imran Hassan',
-    readTime: '4 min read',
-    published: 'May 11, 2026',
-    title: 'Bangladesh startups attract fresh capital as digital-first businesses scale faster',
-    deck: 'Investors are returning to local growth stories, with fintech, logistics, and commerce platforms proving resilient across a shifting economy.',
-    image:
-      'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1400&q=80',
-    tags: ['Startup', 'Funding', 'Bangladesh', 'Fintech'],
-    summary: [
-      'Early-stage funding is returning to digital-first businesses with stronger unit economics and clearer regional strategy.',
-      'The investor appetite is especially strong where companies are solving local operational pain rather than chasing vanity metrics.',
-      'Growth is now being measured in retention and monetization, not just top-line expansion.',
-    ],
-    sections: [
-      {
-        heading: 'Capital is returning to sectors with real usage',
-        body:
-          'The local startup ecosystem is maturing from “growth at any cost” to pragmatic scaling. Investors are prioritizing ventures that have measurable product-market fit, clear revenue loops, and stronger execution in the last mile of service delivery. That is a healthy shift, especially in sectors like fintech, B2B commerce, logistics, and embedded enterprise software.',
-      },
-      {
-        heading: 'Local demand is driving stronger outcomes',
-        body:
-          'The most promising companies are not simply digitizing a foreign model. They are building products for the realities of Bangladesh: transaction complexity, distribution issues, and the need for reliable trust infrastructure. That makes the market more compelling for founders who can design with local conditions in mind rather than importing a generic template.',
-      },
-      {
-        heading: 'What matters now is disciplined execution',
-        body:
-          'For startups, the next phase is not just raising capital. It is proving that the revenue engine can compound without heavy dependency on subsidies or a short-term market surge. Strong founders are being rewarded when they combine product clarity with operational discipline and a long view of user trust.',
-      },
-    ],
-    reactionCount: 1432,
-  },
-};
 
 const relatedStories = [
   {
