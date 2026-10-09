@@ -12,6 +12,8 @@ import TrendingNews from './_components/TrendingNews';
 import Subscribe from './_components/Subscribe';
 import InternationalNews from './_components/InternationalNews';
 import Banner from './_components/Banner';
+import LivePoll from '@/components/LivePoll';
+
 export default function Home() {
   return <main className='container mx-auto'>
     <div className="mx-6">
@@ -59,6 +61,10 @@ export default function Home() {
 
           <div>
             <DailyNews />
+          </div>
+
+          <div className="my-6">
+            <LivePoll />
           </div>
 
           <Card
