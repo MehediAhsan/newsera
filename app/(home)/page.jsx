@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useMemo, useState } from 'react';
 import { ArrowRight, Clock3, Flame, Sparkles, TrendingUp, Radio } from 'lucide-react';
 import { articleCatalog, featuredArticles } from '@/lib/newsCatalog';
 import LivePoll from '@/components/LivePoll';
@@ -8,10 +11,100 @@ import EditorBriefing from '@/components/EditorBriefing';
 
 const categories = ['All', 'Technology', 'Business', 'Politics', 'Climate', 'World', 'Culture'];
 
+const normalizeStory = (story) => {
+  const fallback = typeof story === 'object' && story !== null ? story : {};
+  const title = fallback.title || fallback.headline || 'Untitled story';
+  const category = fallback.category || fallback.type || 'General';
+  const image =
+    fallback.image ||
+    fallback.featuredImage ||
+    'https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=80';
+  const content = fallback.content || fallback.description || fallback.excerpt || '';
+
+  return {
+    slug: fallback.slug || fallback._id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+    category,
+    author: fallback.authorName || fallback.author?.name || fallback.author || 'NewsEra Desk',
+    readTime:
+      typeof fallback.readTime === 'number'
+        ? `${fallback.readTime} min read`
+        : fallback.readTime || '5 min read',
+    published: fallback.publishedAt
+      ? new Date(fallback.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+      : fallback.published || 'Today',
+    title,
+    deck: fallback.excerpt || fallback.description || fallback.deck || content.slice(0, 160),
+    image,
+    tags: fallback.tags || ['News'],
+    summary: fallback.summary || [fallback.excerpt || fallback.description || 'Latest newsroom update'],
+    sections: fallback.sections || [{ heading: 'Overview', body: content }],
+    reactionCount: fallback.metrics?.likes || fallback.reactionCount || 0,
+  };
+};
+
 export default function Home() {
-  const lead = featuredArticles[0];
-  const secondary = featuredArticles.slice(1);
-  const listStories = articleCatalog.slice(0, 5);
+  const [stories, setStories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  useEffect(() => {
+    let mounted = true;
+
+    fetch('/api/news')
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data) => {
+        if (!mounted) return;
+        if (Array.isArray(data) && data.length) {
+          setStories(data.map(normalizeStory));
+        } else {
+          setStories(articleCatalog.map(normalizeStory));
+        }
+      })
+      .catch(() => {
+        if (mounted) setStories(articleCatalog.map(normalizeStory));
+      })
+      .finally(() => {
+        if (mounted) setLoading(false);
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const normalizedStories = useMemo(() => stories.map(normalizeStory), [stories]);
+  const filteredStories = useMemo(() => {
+    if (selectedCategory === 'All') return normalizedStories;
+
+    return normalizedStories.filter((story) => {
+      const storyCategory = String(story.category || '').toLowerCase();
+      return storyCategory.includes(selectedCategory.toLowerCase()) || storyCategory === selectedCategory.toLowerCase();
+    });
+  }, [normalizedStories, selectedCategory]);
+
+  const lead = filteredStories[0] || normalizeStory(featuredArticles[0]);
+  const secondary = filteredStories.slice(1, 3);
+  const listStories = filteredStories.slice(0, 5);
+
+  if (loading && !normalizedStories.length) {
+    return (
+      <main className="mx-auto max-w-7xl px-4 pb-20 pt-6 sm:px-6 lg:px-8">
+        <div className="mb-8 animate-pulse rounded-[32px] border border-white/10 bg-slate-950 p-4 text-white shadow-2xl shadow-slate-950/30 sm:p-6">
+          <div className="mb-5 flex h-8 items-center justify-between gap-3">
+            <div className="h-5 w-40 rounded-full bg-slate-800" />
+            <div className="h-5 w-24 rounded-full bg-slate-800" />
+          </div>
+          <div className="grid gap-5 lg:grid-cols-[1.4fr_0.6fr]">
+            <div className="h-[420px] rounded-[28px] bg-slate-800 sm:h-[500px]" />
+            <div className="space-y-4">
+              <div className="h-40 rounded-[24px] bg-slate-800" />
+              <div className="h-40 rounded-[24px] bg-slate-800" />
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="mx-auto max-w-7xl px-4 pb-20 pt-6 sm:px-6 lg:px-8">
@@ -32,8 +125,9 @@ export default function Home() {
               <button
                 key={category}
                 type="button"
+                onClick={() => setSelectedCategory(category)}
                 className={`rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] transition ${
-                  index === 0
+                  selectedCategory === category || (index === 0 && selectedCategory === 'All')
                     ? 'bg-orange-500 text-white'
                     : 'border border-white/10 bg-white/5 text-slate-300 hover:border-orange-400/40 hover:text-white'
                 }`}

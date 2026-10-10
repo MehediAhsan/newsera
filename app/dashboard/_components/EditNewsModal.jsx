@@ -9,27 +9,48 @@ import FileUpload from "@/components/ui/FileUpload";
 import Modal from "@/components/common/Modal";
 import { showAlert } from "@/utils/sweetAlert";
 
+const categoryOptions = ["Technology", "Business", "Politics", "World", "Climate", "Culture", "Sports", "General"];
+const statusOptions = ["draft", "pending_review", "published", "archived"];
+
 const EditNewsModal = ({ isOpen, onClose, newsItem }) => {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm();
     const { mutate: updateNews, isMutating } = useApi(`/api/news`, "PUT", { queryKey: ["news"] });
 
-    const [image, setImage] = useState(newsItem?.image || null);
+    const [image, setImage] = useState(newsItem?.image || newsItem?.featuredImage || null);
 
     useEffect(() => {
         if (newsItem) {
-            setValue("headline", newsItem.headline);
-            setValue("type", newsItem.type);
-            setValue("description", newsItem.description);
+            setValue("title", newsItem.title || newsItem.headline || '');
+            setValue("category", newsItem.category || newsItem.type || 'General');
+            setValue("status", newsItem.status || 'draft');
+            setValue("excerpt", newsItem.excerpt || newsItem.description || '');
+            setValue("content", newsItem.content || newsItem.description || '');
+            setValue("tags", Array.isArray(newsItem.tags) ? newsItem.tags.join(', ') : '');
+            setValue("readTime", newsItem.readTime || 5);
+            setImage(newsItem.image || newsItem.featuredImage || null);
         }
     }, [newsItem, setValue]);
 
     const onSubmit = (data) => {
         updateNews(
-            { _id: newsItem._id, ...data, image }, 
+            {
+                _id: newsItem._id,
+                title: data.title,
+                category: data.category,
+                status: data.status,
+                excerpt: data.excerpt,
+                description: data.description || data.excerpt,
+                content: data.content || data.excerpt,
+                tags: data.tags,
+                type: data.category,
+                featuredImage: image,
+                image,
+                readTime: Number(data.readTime) || 5,
+            },
             {
                 onSuccess: () => {
                     onClose();
-                    showAlert({ title: "Success!", text: "News updated successfully." })
+                    showAlert({ title: "Success!", text: "News updated successfully." });
                 },
             }
         );
@@ -37,25 +58,24 @@ const EditNewsModal = ({ isOpen, onClose, newsItem }) => {
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} title="Edit News">
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 w-full mx-auto">
-                <Input label="News Headline" register={register} required errors={errors} name="headline" placeholder="Enter News Headline..." />
+            <form onSubmit={handleSubmit(onSubmit)} className="mx-auto flex w-full flex-col gap-5">
+                <Input label="News headline" register={register} required errors={errors} name="title" placeholder="Enter News Headline..." />
 
-                <Select
-                    label="News Type"
-                    register={register}
-                    required
-                    errors={errors}
-                    name="type"
-                    options={["International", "Sports", "Entertainment", "Politics", "Education", "Health"]}
-                />
+                <div className="grid gap-5 md:grid-cols-2">
+                    <Select label="Category" register={register} required errors={errors} name="category" options={categoryOptions} />
+                    <Select label="Status" register={register} required errors={errors} name="status" options={statusOptions} />
+                </div>
 
-                <Textarea label="News Description" register={register} required errors={errors} name="description" placeholder="Enter News Description..." />
+                <Textarea label="Short excerpt" register={register} required errors={errors} name="excerpt" placeholder="Enter News Description..." />
+                <Textarea label="Full story" register={register} required errors={errors} name="content" placeholder="Write the updated article content..." />
+                <Input label="Tags" register={register} errors={errors} name="tags" placeholder="ai,product,markets" />
+                <Input label="Read time" register={register} errors={errors} name="readTime" placeholder="5" />
 
                 <FileUpload label="Upload News Banner" data={image} setData={setImage} />
 
                 <button
                     type="submit"
-                    className="w-full py-3 bg-blue-600 hover:bg-blue-500 transition text-white font-semibold rounded-lg disabled:bg-gray-600"
+                    className="w-full rounded-xl bg-gradient-to-r from-orange-500 to-amber-400 px-4 py-3 font-semibold text-white transition hover:opacity-95 disabled:bg-slate-600"
                     disabled={isMutating}
                 >
                     {isMutating ? "Updating..." : "Update News"}

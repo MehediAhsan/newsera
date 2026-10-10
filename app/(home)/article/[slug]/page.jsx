@@ -14,6 +14,33 @@ import {
   ThumbsUp,
 } from 'lucide-react';
 
+const normalizeArticle = (story) => {
+  const fallback = story || {};
+  const title = fallback.title || fallback.headline || 'Untitled story';
+  const category = fallback.category || fallback.type || 'General';
+  const content = fallback.content || fallback.description || fallback.excerpt || '';
+
+  return {
+    slug: fallback.slug || fallback._id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+    title,
+    category,
+    author: fallback.authorName || fallback.author?.name || fallback.author || 'NewsEra Desk',
+    published: fallback.publishedAt
+      ? new Date(fallback.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+      : fallback.published || 'Today',
+    readTime: typeof fallback.readTime === 'number' ? `${fallback.readTime} min read` : fallback.readTime || '5 min read',
+    image:
+      fallback.image ||
+      fallback.featuredImage ||
+      'https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=80',
+    deck: fallback.excerpt || fallback.description || fallback.deck || content.slice(0, 150),
+    tags: fallback.tags || ['News'],
+    summary: fallback.summary || [fallback.excerpt || fallback.description || 'Latest newsroom update'],
+    sections: fallback.sections || [{ heading: 'Overview', body: content }],
+    reactionCount: fallback.metrics?.likes || fallback.reactionCount || 0,
+  };
+};
+
 const relatedStories = [
   {
     title: 'Cities are rethinking flood resilience as extreme weather hits everyday life',
@@ -42,12 +69,34 @@ export default function ArticlePage({ params }) {
   const [bookmarked, setBookmarked] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [showSummary, setShowSummary] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [article, setArticle] = useState(() => articleMap[params?.slug] || articleMap['ai-reshaping-product-teams']);
 
   const slug = params?.slug;
-  const article = useMemo(
-    () => articleMap[slug] || articleMap['ai-reshaping-product-teams'],
-    [slug]
-  );
+
+  useEffect(() => {
+    let mounted = true;
+
+    fetch('/api/news')
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data) => {
+        if (!mounted || !Array.isArray(data)) return;
+        const found = data.find((item) => (item.slug || item._id) === slug || (item.title || item.headline) === slug);
+        if (found) {
+          setArticle(normalizeArticle(found));
+        }
+      })
+      .catch(() => {
+        if (mounted) setArticle(articleMap[slug] || articleMap['ai-reshaping-product-teams']);
+      })
+      .finally(() => {
+        if (mounted) setLoading(false);
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, [slug]);
 
   useEffect(() => {
     if (!slug) return;
@@ -94,6 +143,24 @@ export default function ArticlePage({ params }) {
     if (!('speechSynthesis' in window)) return;
     setIsSpeaking((prev) => !prev);
   };
+
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-slate-950 text-slate-100">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mb-8 h-12 w-52 animate-pulse rounded-full bg-slate-800" />
+          <div className="overflow-hidden rounded-[32px] border border-white/10 bg-slate-900/60 p-4">
+            <div className="h-[340px] w-full animate-pulse rounded-[28px] bg-slate-800 sm:h-[440px] lg:h-[520px]" />
+            <div className="mt-6 space-y-4">
+              <div className="h-4 w-48 animate-pulse rounded-full bg-slate-800" />
+              <div className="h-10 w-full animate-pulse rounded-full bg-slate-800" />
+              <div className="h-6 w-4/5 animate-pulse rounded-full bg-slate-800" />
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
