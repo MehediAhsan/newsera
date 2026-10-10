@@ -7,18 +7,9 @@ import { Search } from 'lucide-react';
 import Header from './Header';
 import SearchModal from './SearchModal';
 
-const dropdownNavs = [
-  { title: 'International', path: '/international' },
-  { title: 'Sports', path: '/sports' },
-  { title: 'Entertainment', path: '/entertainment' },
-  { title: 'Politics', path: '/politics' },
-  { title: 'Education', path: '/education' },
-  { title: 'Health', path: '/health' },
-];
-
 const navigation = [
   { title: 'Home', path: '/', isDropdown: false },
-  { title: 'News', path: '#', isDropdown: true, navs: dropdownNavs },
+  { title: 'News', path: '/news', isDropdown: false },
   { title: 'Saved', path: '/reading-list', isDropdown: false },
   { title: 'About', path: '/about', isDropdown: false },
   { title: 'Contact', path: '/contact', isDropdown: false },
