@@ -43,7 +43,14 @@ npm install  # or yarn install
 MONGODB_URI=mongodb+srv://yourusername:yourpassword@cluster.mongodb.net/newsDB?retryWrites=true&w=majority
 ```
 
-### 4. Start the Development Server
+### 4. Configure the Newsroom Assistant (Optional)
+- Add an OpenAI API key to `.env.local` to enable AI-generated answers:
+```sh
+OPENAI_API_KEY=your_openai_api_key
+```
+- Without an available OpenAI key or provider quota, the assistant still searches NewsEra's published stories and labels its answers as newsroom-content-only.
+
+### 5. Start the Development Server
 ```sh
 npm run dev  # or yarn dev
 ```
